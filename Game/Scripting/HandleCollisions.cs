@@ -3,13 +3,7 @@ using Unit06.Game.Casting;
 
 namespace Unit06.Game.Scripting
 {
-    /// <summary>
-    /// <para>An update action that handles interactions between the actors.</para>
-    /// <para>
-    /// The responsibility of HandleCollisionsAction is to handle the situation when the snake 
-    /// collides with the food, or the snake collides with its segments, or the game is over.
-    /// </para>
-    /// </summary>
+    /// An update action that handles interactions between the actors.
     public class HandleCollisions : Action
     {
         private bool isGameOver = false;

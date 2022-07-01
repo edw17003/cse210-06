@@ -2,12 +2,7 @@ using Unit06.Game.Casting;
 
 namespace Unit06.Game
 {
-    /// <summary>
-    /// <para>A tasty item that snakes like to eat.</para>
-    /// <para>
-    /// The responsibility of Food is to select a random position and points that it's worth.
-    /// </para>
-    /// </summary>
+    /// Constants used throughout the project
     public class Constants
     {
         public static int COLUMNS = 40;

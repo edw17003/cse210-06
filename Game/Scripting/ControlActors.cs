@@ -4,27 +4,21 @@ using Unit06.Game.Services;
 
 namespace Unit06.Game.Scripting
 {
-    /// <summary>
     /// <para>An input action that controls the snake.</para>
-    /// <para>
     /// The responsibility of ControlActorsAction is to get the direction and move the snake's head.
-    /// </para>
-    /// </summary>
     public class ControlActors : Action
     {
         private KeyboardService keyboardService;
         private Point direction = new Point(0, -Constants.CELL_SIZE);
         private Point direction2 = new Point(0, -Constants.CELL_SIZE);
 
-        /// <summary>
         /// Constructs a new instance of ControlActorsAction using the given KeyboardService.
-        /// </summary>
         public ControlActors(KeyboardService keyboardService)
         {
             this.keyboardService = keyboardService;
         }
 
-        /// <inheritdoc/>
+        /// 
         public void Execute(Cast cast, Script script)
         {
             // left

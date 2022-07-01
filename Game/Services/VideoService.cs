@@ -26,10 +26,7 @@ namespace Unit06.Game.Services
         {
             Raylib.BeginDrawing();
             Raylib.ClearBackground(Raylib_cs.Color.BLACK);
-            if (debug)
-            {
-                
-            }
+            if (debug) {}
         }
 
         /// Draws the given actor's text on the screen.

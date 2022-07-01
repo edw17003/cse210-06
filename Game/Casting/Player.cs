@@ -1,17 +1,13 @@
 namespace Unit06.Game.Casting
 {
-    /// <summary>
     /// <para>A player on a bike.</para>
     /// <para>The bike continually leaves a trail behind it..</para>
-    /// </summary>
     public class Player : Actor
     {
         private List<Actor> segments = new List<Actor>();
         private Point spawn = new Point(0, 0);
 
-        /// <summary>
         /// Constructs a new instance of Player.
-        /// </summary>
         public Player(Color color, Point spawn)
         {
             SetColor(color);
@@ -19,36 +15,25 @@ namespace Unit06.Game.Casting
             PreparePlayer();
         }
 
-        /// <summary>
         /// Gets the Player's trail segments.
-        /// </summary>
-        /// <returns>The trail segments in a List.</returns>
         public List<Actor> GetTrail()
         {
             return new List<Actor>(segments.Skip(1).ToArray());
         }
 
-        /// <summary>
         /// Gets the Player's cycle.
-        /// </summary>
-        /// <returns>The cycle segment as an instance of Actor.</returns>
         public Actor GetCycle()
         {
             return segments[0];
         }
 
-        /// <summary>
         /// Gets the Player's segments (including the cycle).
-        /// </summary>
-        /// <returns>A list of Player segments as instances of Actors.</returns>
         public List<Actor> GetSegments()
         {
             return segments;
         }
 
-        /// <summary>
         /// Adds an additional Actor to the segments list, extending the trail.
-        /// </summary>
         public void ExtendTrail()
         {
             Actor trail = segments.Last<Actor>();
@@ -64,7 +49,7 @@ namespace Unit06.Game.Casting
             segments.Add(segment);
         }
 
-        /// <inheritdoc/>
+        //
         public override void MoveNext()
         {
             foreach (Actor segment in segments)
@@ -87,9 +72,7 @@ namespace Unit06.Game.Casting
             segments[0].SetVelocity(direction);
         }
 
-        /// <summary>
         /// Prepares the Player trail for moving.
-        /// </summary>
         private void PreparePlayer()
         {
             int x = spawn.GetX();

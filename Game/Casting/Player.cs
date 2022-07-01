@@ -56,14 +56,6 @@ namespace Unit06.Game.Casting
             {
                 segment.MoveNext();
             }
-
-            for (int i = segments.Count - 1; i > 0; i--)
-            {
-                Actor trailing = segments[i];
-                Actor previous = segments[i - 1];
-                Point velocity = previous.GetVelocity();
-                trailing.SetVelocity(velocity);
-            }
         }
 
         // Turns the player's cycle to face the given direction

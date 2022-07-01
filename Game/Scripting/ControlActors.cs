@@ -23,7 +23,7 @@ namespace Unit06.Game.Scripting
         {
             // left
             if (keyboardService.IsKeyDown("a"))
-            {
+            {   
                 direction = new Point(-Constants.CELL_SIZE, 0);
             }
 

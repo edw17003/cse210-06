@@ -5,7 +5,7 @@ using Unit06.Game.Services;
 using Unit06.Game;
 
 
-namespace Unit05
+namespace Unit06
 {
     /// <summary>
     /// The program's entry point.

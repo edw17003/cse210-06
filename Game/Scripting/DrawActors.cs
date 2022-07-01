@@ -4,23 +4,18 @@ using Unit06.Game.Services;
 
 namespace Unit06.Game.Scripting
 {
-    /// <summary>
-    /// <para>An output action that draws all the actors.</para>
-    /// <para>The responsibility of DrawActorsAction is to draw each of the actors.</para>
-    /// </summary>
+    /// The responsibility of DrawActorsAction is to draw each of the actors.</para>
     public class DrawActors : Action
     {
         private VideoService videoService;
 
-        /// <summary>
         /// Constructs a new instance of ControlActorsAction using the given KeyboardService.
-        /// </summary>
         public DrawActors(VideoService videoService)
         {
             this.videoService = videoService;
         }
 
-        /// <inheritdoc/>
+        /// 
         public void Execute(Cast cast, Script script)
         {
             Player player1 = (Player)cast.GetFirstOfKey("player1");

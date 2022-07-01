@@ -5,33 +5,30 @@ using Unit06.Game.Services;
 
 namespace Unit06.Game.Directing
 {
-    /// <summary>
-    /// <para>A person who directs the game.</para>
-    /// <para>
     /// The responsibility of a Director is to control the sequence of play.
-    /// </para>
-    /// </summary>
     public class Director
     {
         private VideoService videoService = null;
 
-        /// <summary>
         /// Constructs a new instance of Director using the given KeyboardService and VideoService.
-        /// </summary>
-        /// <param name="videoService">The given VideoService.</param>
         public Director(VideoService videoService)
         {
             this.videoService = videoService;
         }
 
-        /// <summary>
         /// Starts the game by running the main game loop for the given cast and script.
-        /// </summary>
-        /// <param name="cast">The given cast.</param>
-        /// <param name="script">The given script.</param>
         public void StartGame(Cast cast, Script script)
         {
             videoService.OpenWindow();
+
+            // This block of code is just to ensure that controler 
+            // detection is only outputted once to the console.
+            ExecuteActions("input", cast, script);
+            ExecuteActions("update", cast, script);
+            ExecuteActions("output", cast, script);
+            ExecuteActions("debug", cast, script);
+            // Feel free to comment it out if it gets disruptive
+
             while (videoService.IsWindowOpen())
             {
                 ExecuteActions("input", cast, script);
@@ -42,12 +39,7 @@ namespace Unit06.Game.Directing
             videoService.CloseWindow();
         }
 
-        /// <summary>
-        /// Calls execute for each action in the given group.
-        /// </summary>
-        /// <param name="group">The group name.</param>
-        /// <param name="cast">The cast of actors.</param>
-        /// <param name="script">The script of actions.</param>
+        /// Executes each action in the given group.
         private void ExecuteActions(string group, Cast cast, Script script)
         {
             List<Game.Scripting.Action> actions = script.GetActions(group);

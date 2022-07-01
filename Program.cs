@@ -7,15 +7,10 @@ using Unit06.Game;
 
 namespace Unit06
 {
-    /// <summary>
     /// The program's entry point.
-    /// </summary>
     class Program
     {
-        /// <summary>
         /// Starts the program using the given arguments.
-        /// </summary>
-        /// <param name="args">The given arguments.</param>
         static void Main(string[] args)
         {
             // create the cast
@@ -39,6 +34,7 @@ namespace Unit06
             script.AddAction("update", new HandleCollisions());
             script.AddAction("output", new DrawActors(videoService));
             script.AddAction("sound", new PlaySound(audioService, sound));
+            script.AddAction("debug", new CheckGamepad()); // <------------ This is what writes to the console so often
             // start the game
             Director director = new Director(videoService);
             director.StartGame(cast, script);

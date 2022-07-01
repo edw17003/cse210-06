@@ -36,7 +36,7 @@ namespace Unit06.Game.Scripting
         }
 
         /// Removes the given action from the given group.
-        public void RemoveActor(string group, Action action)
+        public void RemoveAction(string group, Action action)
         {
             if (actions.ContainsKey(group))
             {

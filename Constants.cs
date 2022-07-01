@@ -1,6 +1,6 @@
-using Unit05.Game.Casting;
+using Unit06.Game.Casting;
 
-namespace Unit05.Game
+namespace Unit06.Game
 {
     /// <summary>
     /// <para>A tasty item that snakes like to eat.</para>

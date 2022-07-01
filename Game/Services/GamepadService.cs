@@ -1,6 +1,6 @@
 using Raylib_cs;
 
-namespace Unit05.Game.Services
+namespace Unit06.Game.Services
 {
     public class GamepadService
     {

@@ -7,22 +7,11 @@ namespace Unit05.Game.Services
         public GamepadService()
         {
         }
-    
-        public char GetGamepadName(int gamepad)
-        {
-            return Raylib.GetGamepadName(gamepad);
-        }
 
-        public bool IsGamepadButtonDown(int gamepad, int button)
+        public bool IsGamepadAvailable(int gamepad)
         {
-            return Raylib.IsGamepadButtonDown(gamepad, button);
+            return Raylib.IsGamepadAvailable(gamepad);
         }
-
-        public float GetGamepadAxisMovement(int gamepad, string axis)
-        {
-            Raylib.GetGamepadAxisMovement(gamepad, axis);
-        }
-    
     }
 }
 

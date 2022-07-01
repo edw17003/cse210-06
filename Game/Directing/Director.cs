@@ -37,6 +37,7 @@ namespace Unit06.Game.Directing
                 ExecuteActions("input", cast, script);
                 ExecuteActions("update", cast, script);
                 ExecuteActions("output", cast, script);
+                ExecuteActions("sound", cast, script);
             }
             videoService.CloseWindow();
         }

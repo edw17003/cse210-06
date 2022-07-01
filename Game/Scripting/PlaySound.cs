@@ -7,17 +7,17 @@ namespace Unit06.Game.Scripting
     public class PlaySound : Action
     {
         private AudioService audioService;
-        private string filename;
 
-        public PlaySound(AudioService audioService, string filename)
+        private Sound sound;
+
+        public PlaySound(AudioService audioService, Sound sound)
         {
             this.audioService = audioService;
-            this.filename = filename;
+            this.sound = sound;
         }
 
         public void Execute(Cast cast, Script script)
         {
-            Sound sound = new Sound(filename);
             audioService.PlaySound(sound);
         }
     }

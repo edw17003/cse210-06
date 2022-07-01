@@ -27,6 +27,7 @@ namespace Unit06.Game.Directing
             ExecuteActions("update", cast, script);
             ExecuteActions("output", cast, script);
             ExecuteActions("debug", cast, script);
+            // Feel free to comment it out if it gets disruptive
 
             while (videoService.IsWindowOpen())
             {

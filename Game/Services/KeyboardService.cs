@@ -1,7 +1,7 @@
 using Raylib_cs;
 
 
-namespace Unit05.Game.Services
+namespace Unit06.Game.Services
 {
     /// <summary>
     /// <para>Detects player input.</para>

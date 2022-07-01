@@ -1,4 +1,4 @@
-namespace Unit05.Game.Scripting
+namespace Unit06.Game.Scripting
 {
     /// <summary>
     /// <para>A collection of actions.</para>

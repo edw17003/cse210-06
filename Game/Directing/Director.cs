@@ -1,9 +1,9 @@
-using Unit05.Game.Casting;
-using Unit05.Game.Scripting;
-using Unit05.Game.Services;
+using Unit06.Game.Casting;
+using Unit06.Game.Scripting;
+using Unit06.Game.Services;
 
 
-namespace Unit05.Game.Directing
+namespace Unit06.Game.Directing
 {
     /// <summary>
     /// <para>A person who directs the game.</para>

@@ -1,8 +1,8 @@
 using Raylib_cs;
-using Unit05.Game.Casting;
+using Unit06.Game.Casting;
 
 
-namespace Unit05.Game.Services
+namespace Unit06.Game.Services
 {
     /// <summary>
     /// <para>Outputs the game state.</para>
@@ -41,7 +41,7 @@ namespace Unit05.Game.Services
             Raylib.ClearBackground(Raylib_cs.Color.BLACK);
             if (debug)
             {
-                DrawGrid();
+                
             }
         }
 
@@ -97,21 +97,6 @@ namespace Unit05.Game.Services
         {
             Raylib.InitWindow(Constants.MAX_X, Constants.MAX_Y, Constants.CAPTION);
             Raylib.SetTargetFPS(Constants.FRAME_RATE);
-        }
-
-        /// <summary>
-        /// Draws a grid on the screen.
-        /// </summary>
-        private void DrawGrid()
-        {
-            for (int x = 0; x < Constants.MAX_X; x += Constants.CELL_SIZE)
-            {
-                Raylib.DrawLine(x, 0, x, Constants.MAX_Y, Raylib_cs.Color.GRAY);
-            }
-            for (int y = 0; y < Constants.MAX_Y; y += Constants.CELL_SIZE)
-            {
-                Raylib.DrawLine(0, y, Constants.MAX_X, y, Raylib_cs.Color.GRAY);
-            }
         }
 
         /// <summary>

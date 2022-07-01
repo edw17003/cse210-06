@@ -33,7 +33,8 @@ namespace Unit06
             script.AddAction("update", new MoveActors());
             script.AddAction("update", new HandleCollisions());
             script.AddAction("output", new DrawActors(videoService));
-            script.AddAction("sound", new PlaySound(audioService, "laser.wav"));
+            script.AddAction("sound", new PlaySound(audioService, sound));
+            script.AddAction("debug", new CheckGamepad()); // <------------ This is what writes to the console so often
             // start the game
             Director director = new Director(videoService);
             director.StartGame(cast, script);

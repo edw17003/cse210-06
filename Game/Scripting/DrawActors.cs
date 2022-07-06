@@ -18,15 +18,13 @@ namespace Unit06.Game.Scripting
         /// 
         public void Execute(Cast cast, Script script)
         {
-            Player player1 = (Player)cast.GetFirstOfKey("player1");
-            Player player2 = (Player)cast.GetFirstOfKey("player2");
-            List<Actor> body1 = player1.GetSegments();
-            List<Actor> body2 = player2.GetSegments();
+            List<Actor> players = cast.GetActors("players");
+            
             List<Actor> messages = cast.GetActors("messages");
             
             videoService.ClearBuffer();
-            videoService.DrawActors(body1);
-            videoService.DrawActors(body2);
+            videoService.DrawActors(players);
+            
             videoService.DrawActors(messages);
             videoService.FlushBuffer();
         }

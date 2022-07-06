@@ -45,7 +45,7 @@ namespace Unit06.Game.Scripting
                 direction = new Point(0, Constants.CELL_SIZE);
             }
 
-            Player player1 = (Player)cast.GetFirstOfKey("player1");
+            Player player1 = (Player)cast.GetActors("players")[0];
             player1.SetVelocity(direction);
 
             // left
@@ -73,7 +73,7 @@ namespace Unit06.Game.Scripting
             }
 
             
-            Player player2 = (Player)cast.GetFirstOfKey("player2");
+            Player player2 = (Player)cast.GetActors("players")[1];
             player2.SetVelocity(direction2);
             
             if (keyboardService.IsKeyDown("e"))

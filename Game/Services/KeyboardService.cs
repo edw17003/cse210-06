@@ -20,6 +20,8 @@ namespace Unit06.Game.Services
             keys["j"] = KeyboardKey.KEY_J;
             keys["k"] = KeyboardKey.KEY_K;
             keys["l"] = KeyboardKey.KEY_L;
+            keys["e"] = KeyboardKey.KEY_E;
+            keys["o"] = KeyboardKey.KEY_O;
         }
 
         /// Checks if the given key is currently down. (w, a, s, d, i, j, k, or l)

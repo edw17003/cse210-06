@@ -35,33 +35,33 @@ namespace Unit06.Game.Scripting
             
             Player player1 = (Player) cast.GetFirstOfKey("player1");
             Player player2 = (Player) cast.GetFirstOfKey("player2");
-            Actor head1 = player1.GetCycle();
-            Actor head2 = player2.GetCycle();
-            List<Actor> body1 = player1.GetSegments();
-            List<Actor> body2 = player2.GetSegments();
+            // Actor head1 = player1.GetCycle();
+            // Actor head2 = player2.GetCycle();
+            // List<Actor> body1 = player1.GetSegments();
+            // List<Actor> body2 = player2.GetSegments();
 
-            foreach (Actor segment in body1.Skip(1))
-            {
-                if (segment.GetPosition().Equals(head1.GetPosition()))
-                {
-                    isGameOver = true;
-                }
-                if (segment.GetPosition().Equals(head2.GetPosition()))
-                {
-                    isGameOver = true;
-                }
-            }
-            foreach (Actor segment in body2.Skip(1))
-            {
-                if (segment.GetPosition().Equals(head1.GetPosition()))
-                {
-                    isGameOver = true;
-                }
-                if (segment.GetPosition().Equals(head2.GetPosition()))
-                {
-                    isGameOver = true;
-                }
-            }  
+            // foreach (Actor segment in body1.Skip(1))
+            // {
+            //     if (segment.GetPosition().Equals(player1.GetPosition()))
+            //     {
+            //         isGameOver = true;
+            //     }
+            //     if (segment.GetPosition().Equals(player2.GetPosition()))
+            //     {
+            //         isGameOver = true;
+            //     }
+            // }
+            // foreach (Actor segment in body2.Skip(1))
+            // {
+            //     if (segment.GetPosition().Equals(head1.GetPosition()))
+            //     {
+            //         isGameOver = true;
+            //     }
+            //     if (segment.GetPosition().Equals(head2.GetPosition()))
+            //     {
+            //         isGameOver = true;
+            //     }
+            // }  
         }
         
 
@@ -74,8 +74,8 @@ namespace Unit06.Game.Scripting
             {
                 Player player1 = (Player)cast.GetFirstOfKey("player1");
                 Player player2 = (Player)cast.GetFirstOfKey("player2");
-                List<Actor> body1 = player1.GetSegments();
-                List<Actor> body2 = player2.GetSegments();
+                // List<Actor> body1 = player1.GetSegments();
+                // List<Actor> body2 = player2.GetSegments();
 
                 // create a "game over" message
                 int x = Constants.MAX_X / 2 - 110;
@@ -90,14 +90,14 @@ namespace Unit06.Game.Scripting
                 cast.AddActor("messages", message);
 
                 // make everything white
-                foreach (Actor segment in body1)
-                {
-                    segment.SetColor(Constants.WHITE);
-                }
-                foreach (Actor segment in body2)
-                {
-                    segment.SetColor(Constants.WHITE);
-                }
+                // foreach (Actor segment in body1)
+                // {
+                //     segment.SetColor(Constants.WHITE);
+                // }
+                // foreach (Actor segment in body2)
+                // {
+                //     segment.SetColor(Constants.WHITE);
+                // }
                 player1.SetColor(Constants.WHITE);
                 player2.SetColor(Constants.WHITE);
             }

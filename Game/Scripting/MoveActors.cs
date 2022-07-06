@@ -22,8 +22,6 @@ namespace Unit06.Game.Scripting
             {
                 actor.MoveNext();
             }
-            player1.ExtendTrail();
-            player2.ExtendTrail();
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Unit06.Game.Scripting
         public void Execute(Cast cast, Script script)
         {
             List<Actor> players = cast.GetActors("players");
-            
+            List<Actor> bullets = cast.GetActors("bullets");
             List<Actor> messages = cast.GetActors("messages");
             
             videoService.ClearBuffer();

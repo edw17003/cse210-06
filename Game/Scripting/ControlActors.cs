@@ -46,7 +46,7 @@ namespace Unit06.Game.Scripting
             }
 
             Player player1 = (Player)cast.GetFirstOfKey("player1");
-            player1.TurnCycle(direction);
+            player1.SetVelocity(direction);
 
             // left
             if (keyboardService.IsKeyDown("j"))
@@ -72,8 +72,20 @@ namespace Unit06.Game.Scripting
                 direction2 = new Point(0, Constants.CELL_SIZE);
             }
 
+            
             Player player2 = (Player)cast.GetFirstOfKey("player2");
-            player2.TurnCycle(direction2);
+            player2.SetVelocity(direction2);
+            
+            if (keyboardService.IsKeyDown("e"))
+            {
+                Bullet bullet = new Bullet(direction, player1.GetPosition());
+                cast.AddActor("bullets", bullet);
+            }
+            if (keyboardService.IsKeyDown("o"))
+            {
+                Bullet bullet = new Bullet(direction, player2.GetPosition());
+                cast.AddActor("bullets", bullet);
+            }
         }
     }
 }

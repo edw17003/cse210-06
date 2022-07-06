@@ -26,6 +26,9 @@ namespace Unit06
             KeyboardService keyboardService = new KeyboardService();
             VideoService videoService = new VideoService(false);
             AudioService audioService = new AudioService();
+            
+            videoService.LoadImages("Game/Assets/Sprites");
+            
             // create the script
 
             Script script = new Script();

@@ -15,10 +15,9 @@ namespace Unit06.Game.Casting
             this.sprite = sprite;
         }
 
-        // Turns the player's cycle to face the given direction
-        public void TurnCycle(Point direction)
+        public Sprite GetSprite()
         {
-            SetVelocity(direction);
+            return this.sprite;
         }
     }
 }

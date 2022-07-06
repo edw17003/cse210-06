@@ -7,6 +7,8 @@ namespace Unit06.Game.Services
     public class VideoService
     {
         private bool debug = false;
+        private Dictionary<string, Raylib_cs.Texture2D> textures
+            = new Dictionary<string, Raylib_cs.Texture2D>();
 
         /// Constructs a new instance of KeyboardService using the given cell size.
         public VideoService(bool debug)
@@ -41,6 +43,20 @@ namespace Unit06.Game.Services
             Raylib.DrawText(text, x, y, fontSize, color);
         }
 
+        public void DrawImage(Casting.Sprite image, Casting.Point position)
+        {
+            string filename = image.GetFilename();
+            if (!textures.ContainsKey(filename))
+            {
+                Raylib_cs.Texture2D loaded = Raylib.LoadTexture(filename);
+                textures[filename] = loaded;
+            }
+            Raylib_cs.Texture2D texture = textures[filename];
+            int x = position.GetX();
+            int y = position.GetY();
+            Raylib.DrawTexture(texture, x, y, Raylib_cs.Color.WHITE);
+        }
+
         /// Draws the given list of actors on the screen.
         public void DrawActors(List<Actor> actors)
         {
@@ -48,6 +64,27 @@ namespace Unit06.Game.Services
             {
                 DrawActor(actor);
             }
+        }
+        public void LoadImages(string directory)
+        {
+            List<string> filters = new List<string>() { "*.png", "*.gif", "*.jpg", "*.jpeg", "*.bmp" };
+            List<string> filepaths = GetFilepaths(directory, filters);
+            foreach (string filepath in filepaths)
+            {
+                Raylib_cs.Texture2D texture = Raylib.LoadTexture(filepath);
+                textures[filepath] = texture;
+            }
+        }
+
+        private List<string> GetFilepaths(string directory, List<string> filters)
+        {
+            List<string> results = new List<string>();
+            foreach (string filter in filters)
+            {
+                string[] filepaths = Directory.GetFiles(directory, filter);
+                results.AddRange(filepaths);
+            }
+            return results;
         }
         
         /// Copies the buffer contents to the screen. This method should be called at the end of

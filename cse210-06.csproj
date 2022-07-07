@@ -3,13 +3,13 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>cse210_05</RootNamespace>
+    <RootNamespace>cse210_06</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Raylib-cs" Version="4.0.0.1" />
+    <PackageReference Include="Raylib-cs" Version="3.7.0.1" />
   </ItemGroup>
 
 </Project>

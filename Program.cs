@@ -13,21 +13,21 @@ namespace Unit06
         /// Starts the program using the given arguments.
         static void Main(string[] args)
         {
+            // create the services
+            KeyboardService keyboardService = new KeyboardService();
+            VideoService videoService = new VideoService(false);
+            AudioService audioService = new AudioService();
+            // videoService.LoadImages("Game/Assets/Sprites");
             // create the cast
             Cast cast = new Cast();
-            Sprite p1 = new Sprite("player1.png", 1, 0);
-            Sprite p2 = new Sprite("player2.png", 1, 0);
+            Sprite p1 = new Sprite("Game/Assets/Sprites/player1.png", 1, 0);
+            Sprite p2 = new Sprite("Game/Assets/Sprites/player2.png", 1, 0);
             Point spawn1 = new Point(Constants.MAX_X / 3, Constants.MAX_Y / 2);
             Point spawn2 = new Point(Constants.MAX_X / 3 * 2, Constants.MAX_Y / 2);
             cast.AddActor("players", new Player(p1, spawn1));
             cast.AddActor("players", new Player(p2, spawn2));
             //Sound sound = new Sound("laser.wav", 1, true);
-            // create the services
-            KeyboardService keyboardService = new KeyboardService();
-            VideoService videoService = new VideoService(false);
-            AudioService audioService = new AudioService();
             
-            videoService.LoadImages("Game/Assets/Sprites");
             
             // create the script
 

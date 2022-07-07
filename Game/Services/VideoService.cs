@@ -69,10 +69,19 @@ namespace Unit06.Game.Services
         {
             List<string> filters = new List<string>() { "*.png", "*.gif", "*.jpg", "*.jpeg", "*.bmp" };
             List<string> filepaths = GetFilepaths(directory, filters);
+            Console.WriteLine($"Directory: {directory}");
             foreach (string filepath in filepaths)
             {
-                Raylib_cs.Texture2D texture = Raylib.LoadTexture(filepath);
-                textures[filepath] = texture;
+                try 
+                {
+                    Console.WriteLine($"**** {filepath}");
+                    Raylib_cs.Texture2D texture = Raylib.LoadTexture(filepath);
+                    textures[filepath] = texture;
+                }
+                catch (AccessViolationException e)
+                {
+                    Console.WriteLine($"**** {filepath}");
+                }
             }
         }
 

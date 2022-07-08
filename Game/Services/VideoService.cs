@@ -126,5 +126,23 @@ namespace Unit06.Game.Services
             return new Raylib_cs.Color(r, g, b, a);
         }
 
+        public void DrawWall(Wall wall)
+        {
+            int posX = wall.GetPosX();
+            int posY = wall.GetPosY();
+            int width = wall.GetWidth();
+            int height = wall.GetHeight();
+
+            Casting.Color color = new Casting.Color(0, 0, 0);
+
+            Raylib.DrawRectangle(posX, posY, width, height, ToRaylibColor(color));
+        }
+        public void DrawWalls(List<Actor> walls)
+        {
+            foreach (Wall wall in walls)
+            {
+                DrawWall(wall);
+            }
+        }
     }
 }

@@ -8,84 +8,25 @@ namespace Unit06.Game.Scripting
     /// The responsibility of ControlActorsAction is to get the direction and move the snake's head.
     public class ControlActors : Action
     {
-        private KeyboardService keyboardService;
-        private Point direction = new Point(0, -Constants.CELL_SIZE);
-        private Point direction2 = new Point(0, -Constants.CELL_SIZE);
+        private GamepadService gamepadService;
+
 
         /// Constructs a new instance of ControlActorsAction using the given KeyboardService.
-        public ControlActors(KeyboardService keyboardService)
+        public ControlActors(GamepadService gamepadService)
         {
-            this.keyboardService = keyboardService;
+            this.gamepadService = gamepadService;
         }
 
         /// 
         public void Execute(Cast cast, Script script)
         {
-            // left
-            if (keyboardService.IsKeyDown("a"))
-            {   
-                direction = new Point(-Constants.CELL_SIZE, 0);
-            }
 
-            // right
-            if (keyboardService.IsKeyDown("d"))
-            {
-                direction = new Point(Constants.CELL_SIZE, 0);
-            }
-
-            // up
-            if (keyboardService.IsKeyDown("w"))
-            {
-                direction = new Point(0, -Constants.CELL_SIZE);
-            }
-
-            // down
-            if (keyboardService.IsKeyDown("s"))
-            {
-                direction = new Point(0, Constants.CELL_SIZE);
-            }
-
+            Point direction = new Point((int)(gamepadService.GetLeftVector(0).X * 10), (int)(gamepadService.GetLeftVector(0).Y * 10));
+            Point direction2 = new Point((int)(gamepadService.GetLeftVector(1).X * 10), (int)(gamepadService.GetLeftVector(1).Y * 10));
             Player player1 = (Player)cast.GetActors("players")[0];
             player1.SetVelocity(direction);
-
-            // left
-            if (keyboardService.IsKeyDown("j"))
-            {
-                direction2 = new Point(-Constants.CELL_SIZE, 0);
-            }
-
-            // right
-            if (keyboardService.IsKeyDown("l"))
-            {
-                direction2 = new Point(Constants.CELL_SIZE, 0);
-            }
-
-            // up
-            if (keyboardService.IsKeyDown("i"))
-            {
-                direction2 = new Point(0, -Constants.CELL_SIZE);
-            }
-
-            // down
-            if (keyboardService.IsKeyDown("k"))
-            {
-                direction2 = new Point(0, Constants.CELL_SIZE);
-            }
-
-            
             Player player2 = (Player)cast.GetActors("players")[1];
             player2.SetVelocity(direction2);
-            
-            if (keyboardService.IsKeyDown("e"))
-            {
-                Bullet bullet = new Bullet(direction, player1.GetPosition());
-                cast.AddActor("bullets", bullet);
-            }
-            if (keyboardService.IsKeyDown("o"))
-            {
-                Bullet bullet = new Bullet(direction, player2.GetPosition());
-                cast.AddActor("bullets", bullet);
-            }
         }
     }
 }

@@ -15,6 +15,7 @@ namespace Unit06
         {
             // create the services
             KeyboardService keyboardService = new KeyboardService();
+            GamepadService gamepadService = new GamepadService();
             VideoService videoService = new VideoService(false);
             AudioService audioService = new AudioService();
             // videoService.LoadImages("Game/Assets/Sprites");
@@ -32,7 +33,7 @@ namespace Unit06
             // create the script
 
             Script script = new Script();
-            script.AddAction("input", new ControlActors(keyboardService));
+            script.AddAction("input", new ControlActors(gamepadService));
             script.AddAction("update", new MoveActors());
             script.AddAction("update", new HandleCollisions());
             script.AddAction("output", new DrawActors(videoService));

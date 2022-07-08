@@ -78,7 +78,7 @@ namespace Unit06.Game.Services
                     Raylib_cs.Texture2D texture = Raylib.LoadTexture(filepath);
                     textures[filepath] = texture;
                 }
-                catch (AccessViolationException e)
+                catch (AccessViolationException)
                 {
                     Console.WriteLine($"**** {filepath}");
                 }

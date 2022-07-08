@@ -21,6 +21,7 @@ namespace Unit06.Game.Scripting
             List<Actor> players = cast.GetActors("players");
             List<Actor> bullets = cast.GetActors("bullets");
             List<Actor> messages = cast.GetActors("messages");
+            List<Actor> walls = cast.GetActors("walls");
             Player player1 = (Player)players[0];
             Player player2 = (Player)players[1];
             Sprite sprite1 = player1.GetSprite();
@@ -29,6 +30,7 @@ namespace Unit06.Game.Scripting
             videoService.DrawImage(sprite1, players[0].GetPosition());
             videoService.DrawImage(sprite2, players[1].GetPosition());
             videoService.DrawActors(messages);
+            videoService.DrawWalls(walls);
             videoService.FlushBuffer();
         }
     }

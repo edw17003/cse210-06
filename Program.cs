@@ -38,7 +38,6 @@ namespace Unit06
             script.AddAction("update", new HandleCollisions());
             script.AddAction("output", new DrawActors(videoService));
             //script.AddAction("sound", new PlaySound(audioService, sound));
-            //script.AddAction("debug", new CheckGamepad());
             // start the game
             Director director = new Director(videoService);
             director.StartGame(cast, script);

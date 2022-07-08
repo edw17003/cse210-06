@@ -20,15 +20,6 @@ namespace Unit06.Game.Directing
         public void StartGame(Cast cast, Script script)
         {
             videoService.OpenWindow();
-
-            // This block of code is just to ensure that controler 
-            // detection is only outputted once to the console.
-            ExecuteActions("input", cast, script);
-            ExecuteActions("update", cast, script);
-            ExecuteActions("output", cast, script);
-            ExecuteActions("debug", cast, script);
-            // Feel free to comment it out if it gets disruptive
-
             while (videoService.IsWindowOpen())
             {
                 ExecuteActions("input", cast, script);

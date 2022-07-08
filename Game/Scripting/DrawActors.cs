@@ -27,8 +27,8 @@ namespace Unit06.Game.Scripting
             videoService.DrawImage(players[0].GetSprite(), players[0].GetPosition());
             videoService.DrawImage(players[1].GetSprite(), players[1].GetPosition());
             
-            videoService.DrawImage(swords[0].GetSprite(), players[0].GetPosition());
-            videoService.DrawImage(swords[1].GetSprite(), players[1].GetPosition());
+            videoService.DrawImage(swords[0].GetSprite(), swords[0].GetPosition());
+            videoService.DrawImage(swords[1].GetSprite(), swords[1].GetPosition());
             videoService.DrawActors(messages);
             videoService.FlushBuffer();
         }

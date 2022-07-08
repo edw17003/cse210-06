@@ -27,7 +27,7 @@ namespace Unit06.Game.Services
         public void ClearBuffer()
         {
             Raylib.BeginDrawing();
-            Raylib.ClearBackground(Raylib_cs.Color.WHITE);
+            Raylib.ClearBackground(Raylib_cs.Color.BEIGE);
             if (debug) {}
         }
 

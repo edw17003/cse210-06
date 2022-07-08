@@ -14,9 +14,6 @@ namespace Unit06.Game.Scripting
         /// 
         public void Execute(Cast cast, Script script)
         {
-            Player player2 = (Player) cast.GetFirstOfKey("player2");
-            Player player1 = (Player) cast.GetFirstOfKey("player1");
-            
             List<Actor> actors = cast.GetAllActors();
             foreach (Actor actor in actors)
             {

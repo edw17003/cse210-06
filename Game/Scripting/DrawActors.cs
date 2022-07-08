@@ -19,15 +19,16 @@ namespace Unit06.Game.Scripting
         public void Execute(Cast cast, Script script)
         {
             List<Actor> players = cast.GetActors("players");
-            List<Actor> bullets = cast.GetActors("bullets");
+            List<Actor> swords = cast.GetActors("swords");
             List<Actor> messages = cast.GetActors("messages");
-            Player player1 = (Player)players[0];
-            Player player2 = (Player)players[1];
-            Sprite sprite1 = player1.GetSprite();
-            Sprite sprite2 = player2.GetSprite();
+
+            
             videoService.ClearBuffer();
-            videoService.DrawImage(sprite1, players[0].GetPosition());
-            videoService.DrawImage(sprite2, players[1].GetPosition());
+            videoService.DrawImage(players[0].GetSprite(), players[0].GetPosition());
+            videoService.DrawImage(players[1].GetSprite(), players[1].GetPosition());
+            
+            videoService.DrawImage(swords[0].GetSprite(), players[0].GetPosition());
+            videoService.DrawImage(swords[1].GetSprite(), players[1].GetPosition());
             videoService.DrawActors(messages);
             videoService.FlushBuffer();
         }

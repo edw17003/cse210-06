@@ -10,6 +10,7 @@ namespace Unit06.Game.Casting
         private Color color = Constants.WHITE;
         private Point position = new Point(0, 0);
         private Point velocity = new Point(0, 0);
+        private Sprite sprite;
 
         /// Constructs a new instance of Actor.
         public Actor()
@@ -105,6 +106,14 @@ namespace Unit06.Game.Casting
             }
             this.velocity = velocity;
         }
+        public Sprite GetSprite()
+        {
+            return this.sprite;
+        }
 
+        public void SetSprite(Sprite sprite)
+        {
+            this.sprite = sprite;
+        }
     }
 }

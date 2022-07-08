@@ -27,7 +27,8 @@ namespace Unit06
             Point spawn2 = new Point(Constants.MAX_X / 3 * 2, Constants.MAX_Y / 2);
             cast.AddActor("players", new Player(p1, spawn1));
             cast.AddActor("players", new Player(p2, spawn2));
-            cast.AddActor("walls", new Wall(810, 390, 150, 150));
+            cast.AddActor("swords", new Sword());
+            cast.AddActor("swords", new Sword());
             //Sound sound = new Sound("laser.wav", 1, true);
             
             

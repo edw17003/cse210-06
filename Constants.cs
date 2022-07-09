@@ -8,8 +8,8 @@ namespace Unit06.Game
         public static int COLUMNS = 40;
         public static int ROWS = 20;
         public static int CELL_SIZE = 15;
-        public static int MAX_X = 1920;
-        public static int MAX_Y = 1080;
+        public static int MAX_X = 1600;
+        public static int MAX_Y = 900;
 
         public static int FRAME_RATE = 240;
         public static int FONT_SIZE = 15;

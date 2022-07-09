@@ -29,7 +29,15 @@ namespace Unit06
             cast.AddActor("players", new Player(p2, spawn2));
             cast.AddActor("swords", new Sword());
             cast.AddActor("swords", new Sword());
-            // cast.AddActor("walls", new Wall(100, 100, 100, 100));
+            // Top Border (x, y, height, width)
+            cast.AddActor("walls", new Wall(0, 0, 20, 1600));
+            // Left Border
+            cast.AddActor("walls", new Wall(0, 0, 900, 20));
+            // Bottom Border
+            cast.AddActor("walls", new Wall(0, 880, 20, 1600));
+            // Right Border
+            cast.AddActor("walls", new Wall(1580, 0, 900, 20));
+            
             //Sound sound = new Sound("laser.wav", 1, true);
             
             

@@ -36,7 +36,16 @@ namespace Unit06.Game.Scripting
             sword2.SetPosition(player2.GetPosition());
             sword1.SetSpriteRotation(player1.GetAngle());
             sword2.SetSpriteRotation(player2.GetAngle());
-            
+            if (gamepadService.IsButtonDown(0, "rt") && player1.GetCooldown() == 0)
+            {
+                cast.AddActor("bullets1", new Bullet(new Point((int)(gamepadService.GetRightVector(0).X*10), (int)(gamepadService.GetRightVector(0).Y * 10)), player1.GetPosition()));
+            }
+            if (gamepadService.IsButtonDown(1, "rt") && player2.GetCooldown() == 0)
+            {
+                cast.AddActor("bullets2", new Bullet(new Point((int)(gamepadService.GetRightVector(1).X*10), (int)(gamepadService.GetRightVector(1).Y * 10)), player2.GetPosition()));
+            }
+
+            player1.SetCooldown();
         }
     }
 }

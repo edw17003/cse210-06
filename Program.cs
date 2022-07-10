@@ -38,6 +38,7 @@ namespace Unit06
             // Right Border
             cast.AddActor("walls", new Wall(1580, 0, 900, 20));
             
+            
             //Sound sound = new Sound("laser.wav", 1, true);
             
             

@@ -5,7 +5,7 @@ namespace Unit06.Game.Casting
     public class Player : Actor
     {
         private Point spawn = new Point(0, 0);
-
+        private int cooldown = 60;
         private int angle = 0;
 
         /// Constructs a new instance of Player.
@@ -24,6 +24,19 @@ namespace Unit06.Game.Casting
         public int GetAngle()
         {
             return this.angle;
+        }
+
+        public void SetCooldown()
+        {
+            if (cooldown > 60)
+            {
+                cooldown--;
+            }
+        }
+
+        public int GetCooldown()
+        {
+            return this.cooldown;
         }
     }
 }

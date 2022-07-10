@@ -40,9 +40,6 @@ namespace Unit06.Game.Scripting
         {
             Player player1 = (Player)cast.GetActors("players")[0];
             Player player2 = (Player)cast.GetActors("players")[1];
-            Wall wallE = (Wall) cast.GetActors("walls")[4];
-
-            Console.WriteLine($"Wall-E stats: Left:{wallE.GetLeft()}, Right:{wallE.GetRight()}, Top:{wallE.GetTop()}, Bot:{wallE.GetBottom()}");
 
             List<Actor> walls = cast.GetActors("walls");
             foreach (Actor wall in walls)

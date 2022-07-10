@@ -26,6 +26,7 @@ namespace Unit06.Game.Scripting
             Player player2 = (Player)players[1];
             Sprite sprite1 = player1.GetSprite();
             Sprite sprite2 = player2.GetSprite();
+            
             videoService.ClearBuffer();
             videoService.DrawImage(players[0].GetSprite(), players[0].GetPosition());
             videoService.DrawImage(players[1].GetSprite(), players[1].GetPosition());

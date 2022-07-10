@@ -6,12 +6,24 @@ namespace Unit06.Game.Casting
     {
         private Point spawn = new Point(0, 0);
 
+        private int angle = 0;
+
         /// Constructs a new instance of Player.
         public Player(Sprite sprite, Point spawn)
         {
             SetPosition(spawn);
             SetSprite(sprite);
             SetSize(64, 64);
+        }
+
+        public void SetAngle(int angle)
+        {
+            this.angle = angle;
+        }
+
+        public int GetAngle()
+        {
+            return this.angle;
         }
     }
 }

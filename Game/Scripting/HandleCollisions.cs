@@ -22,6 +22,36 @@ namespace Unit06.Game.Scripting
             {
                 HandleSegmentCollisions(cast);
                 HandleGameOver(cast);
+                HandlePlayerCollisions(cast);
+                HandleWallCollisions(cast);
+            }
+        }
+        private void HandlePlayerCollisions(Cast cast)
+        {
+            Player player1 = (Player)cast.GetActors("players")[0];
+            Player player2 = (Player)cast.GetActors("players")[1];
+            if (player1.Overlaps(player2))
+            {
+                Console.WriteLine("Player1 is colliding with player2");
+            }
+        }
+
+        private void HandleWallCollisions(Cast cast)
+        {
+            Player player1 = (Player)cast.GetActors("players")[0];
+            Player player2 = (Player)cast.GetActors("players")[1];
+
+            List<Actor> walls = cast.GetActors("walls");
+            foreach (Actor wall in walls)
+            {
+                if (player1.Overlaps(wall))
+                {
+                    Console.WriteLine("Player1 is colliding with a wall.");
+                }
+                if (player2.Overlaps(wall))
+                {
+                    Console.WriteLine("Player2 is colliding with a wall.");
+                }
             }
         }
 

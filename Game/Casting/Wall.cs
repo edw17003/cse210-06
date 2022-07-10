@@ -12,6 +12,8 @@ namespace Unit06.Game.Casting
             this.posY = posY;
             this.width = width;
             this.height = height;
+            this.SetSize(width, height);
+            this.SetPosition(new Point(posX + width, posY + height));
         }
         
         public int GetPosX()

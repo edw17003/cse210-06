@@ -6,12 +6,12 @@ namespace Unit06.Game.Casting
     {
         private Point spawn = new Point(0, 0);
 
-
         /// Constructs a new instance of Player.
         public Player(Sprite sprite, Point spawn)
         {
-            this.spawn = spawn;
+            SetPosition(spawn);
             SetSprite(sprite);
+            SetSize(64, 64);
         }
     }
 }

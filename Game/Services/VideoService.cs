@@ -1,5 +1,6 @@
 using Raylib_cs;
 using Unit06.Game.Casting;
+using System.Numerics;
 
 namespace Unit06.Game.Services
 {
@@ -54,7 +55,8 @@ namespace Unit06.Game.Services
             Raylib_cs.Texture2D texture = textures[filename];
             int x = position.GetX();
             int y = position.GetY();
-            Raylib.DrawTexture(texture, x, y, Raylib_cs.Color.WHITE);
+            Vector2 pos= new Vector2(x, y);
+            Raylib.DrawTextureEx(texture, pos, image.GetRotation(), 1, Raylib_cs.Color.WHITE);
         }
 
         /// Draws the given list of actors on the screen.

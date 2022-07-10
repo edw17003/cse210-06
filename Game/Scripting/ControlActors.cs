@@ -32,8 +32,8 @@ namespace Unit06.Game.Scripting
             
             sword1.SetPosition(player1.GetPosition());
             sword2.SetPosition(player2.GetPosition());
-            sword1.SetSpriteRotation((int)(360 * Math.Atan((gamepadService.GetRightVector(0).X / gamepadService.GetRightVector(0).Y )) / Math.PI));
-            sword2.SetSpriteRotation((int)(360 * Math.Atan((gamepadService.GetRightVector(1).X / gamepadService.GetRightVector(1).Y )) / Math.PI));
+            sword1.SetSpriteRotation((int)(180/Math.PI * (Math.Atan2(gamepadService.GetRightVector(0).Y, gamepadService.GetRightVector(0).X ))));
+            sword2.SetSpriteRotation((int)(180/Math.PI * (Math.Atan2(gamepadService.GetRightVector(1).Y, gamepadService.GetRightVector(1).X ))));
         }
     }
 }

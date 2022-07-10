@@ -5,13 +5,13 @@ namespace Unit06.Game.Casting
     public class Player : Actor
     {
         private Point spawn = new Point(0, 0);
-        private Point size = new Point(100, 100);
 
         /// Constructs a new instance of Player.
         public Player(Sprite sprite, Point spawn)
         {
             SetPosition(spawn);
             SetSprite(sprite);
+            SetSize(64, 64);
         }
     }
 }

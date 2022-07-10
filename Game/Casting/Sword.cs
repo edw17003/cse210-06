@@ -6,9 +6,10 @@ namespace Unit06.Game.Casting
     { 
 
         /// Constructs a new instance of Player.
+        
         public Sword()
         {
-            Sprite sprite = new Sprite("sword.png", 1, 0);
+            Sprite sprite = new Sprite("Game/Assets/Sprites/sword.png", 1, 0);
             SetSprite(sprite);
         }
     }

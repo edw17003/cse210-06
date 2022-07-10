@@ -29,7 +29,7 @@ namespace Unit06
             cast.AddActor("players", new Player(p2, spawn2));
             cast.AddActor("swords", new Sword());
             cast.AddActor("swords", new Sword());
-            // Top Border (x, y, height, width)
+            // Top Border (x, y, height, width) 1600 x 900
             cast.AddActor("walls", new Wall(0, 0, 20, 1600));
             // Left Border
             cast.AddActor("walls", new Wall(0, 0, 900, 20));
@@ -37,7 +37,25 @@ namespace Unit06
             cast.AddActor("walls", new Wall(0, 880, 20, 1600));
             // Right Border
             cast.AddActor("walls", new Wall(1580, 0, 900, 20));
-            
+
+            // Left-vertical barrier
+            cast.AddActor("walls", new Wall(300, 175, 550, 20));
+            // Right-vertical barrier
+            cast.AddActor("walls", new Wall(1300, 175, 550, 20));
+            // Left-horizontal barrier
+            cast.AddActor("walls", new Wall(220, 725, 20, 600));
+            // Right-horizontal barrier
+            cast.AddActor("walls", new Wall(800, 175, 20, 600));
+
+            // Left-vertical nub
+            cast.AddActor("walls", new Wall(220, 250, 20, 80));
+            // right-vertical nub
+            cast.AddActor("walls", new Wall(1320, 625, 20, 80));
+            // Left-horizontal nub
+            cast.AddActor("walls", new Wall(740, 725, 80, 20));
+            // Right-horizontal nub
+            cast.AddActor("walls", new Wall(880, 115, 80, 20));
+
             //Sound sound = new Sound("laser.wav", 1, true);
             
             

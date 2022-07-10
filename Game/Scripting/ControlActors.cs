@@ -27,13 +27,16 @@ namespace Unit06.Game.Scripting
             player1.SetVelocity(direction);
             Player player2 = (Player)cast.GetActors("players")[1];
             player2.SetVelocity(direction2);
+            player1.SetAngle((int)(180/Math.PI * (Math.Atan2(gamepadService.GetRightVector(0).Y, gamepadService.GetRightVector(0).X ))));
+            player2.SetAngle((int)(180/Math.PI * (Math.Atan2(gamepadService.GetRightVector(1).Y, gamepadService.GetRightVector(1).X ))));
             Sword sword1 = (Sword)cast.GetActors("swords")[0];
             Sword sword2 = (Sword)cast.GetActors("swords")[1];
             
             sword1.SetPosition(player1.GetPosition());
             sword2.SetPosition(player2.GetPosition());
-            sword1.SetSpriteRotation((int)(180/Math.PI * (Math.Atan2(gamepadService.GetRightVector(0).Y, gamepadService.GetRightVector(0).X ))));
-            sword2.SetSpriteRotation((int)(180/Math.PI * (Math.Atan2(gamepadService.GetRightVector(1).Y, gamepadService.GetRightVector(1).X ))));
+            sword1.SetSpriteRotation(player1.GetAngle());
+            sword2.SetSpriteRotation(player2.GetAngle());
+            
         }
     }
 }

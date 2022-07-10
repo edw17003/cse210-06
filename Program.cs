@@ -29,6 +29,10 @@ namespace Unit06
             cast.AddActor("players", new Player(p2, spawn2));
             cast.AddActor("swords", new Sword());
             cast.AddActor("swords", new Sword());
+
+            // Debug wall for collision testing
+            // cast.AddActor("walls", new Wall(200, 200, 100, 100));
+
             // Top Border (x, y, height, width) 1600 x 900
             cast.AddActor("walls", new Wall(0, 0, 20, 1600));
             // Left Border

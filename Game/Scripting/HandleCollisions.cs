@@ -24,7 +24,17 @@ namespace Unit06.Game.Scripting
                 HandleGameOver(cast);
                 HandlePlayerCollisions(cast);
                 HandleWallCollisions(cast);
+                // debug(cast);
             }
+        }
+        private void debug(Cast cast)
+        {
+            Wall firstWall = (Wall) cast.GetFirstOfKey("walls");
+            float l = firstWall.GetLeft();
+            float r = firstWall.GetRight();
+            float t = firstWall.GetTop();
+            float b = firstWall.GetBottom();
+            Console.WriteLine($"L:{l}, R:{r}, T:{t}, B:{b}");
         }
         private void HandlePlayerCollisions(Cast cast)
         {

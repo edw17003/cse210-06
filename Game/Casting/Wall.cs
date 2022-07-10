@@ -13,7 +13,6 @@ namespace Unit06.Game.Casting
             this.width = width;
             this.height = height;
             this.SetSize(width, height);
-            this.SetPosition(new Point(posX + width, posY + height));
         }
         
         public int GetPosX()
@@ -31,6 +30,22 @@ namespace Unit06.Game.Casting
         public int GetHeight()
         {
             return height;
+        }
+        public override float GetLeft()
+        {
+            return GetPosX();
+        }
+        public override float GetRight()
+        {
+            return GetPosY() + GetWidth();
+        }
+        public override float GetTop()
+        {
+            return GetPosY();
+        }
+        public override float GetBottom()
+        {
+            return GetPosY() + GetHeight();
         }
     }
 }

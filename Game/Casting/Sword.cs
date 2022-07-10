@@ -6,10 +6,17 @@ namespace Unit06.Game.Casting
     { 
 
         /// Constructs a new instance of Player.
+        Sprite sprite = new Sprite("Game/Assets/Sprites/sword.png", 1, 180);
         public Sword()
         {
-            Sprite sprite = new Sprite("sword.png", 1, 0);
+            
             SetSprite(sprite);
+            
+        }
+
+        public void SetSpriteRotation(int rotate)
+        {
+            this.sprite.SetRotation(rotate);
         }
     }
 }

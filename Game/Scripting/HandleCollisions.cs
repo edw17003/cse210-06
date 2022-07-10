@@ -22,6 +22,20 @@ namespace Unit06.Game.Scripting
             {
                 HandleSegmentCollisions(cast);
                 HandleGameOver(cast);
+                HandlePlayerCollisions(cast);
+            }
+        }
+        private void HandlePlayerCollisions(Cast cast)
+        {
+            Player player1 = (Player)cast.GetActors("players")[0];
+            Player player2 = (Player)cast.GetActors("players")[1];
+            if (player1.Overlaps(player2))
+            {
+                // Console.WriteLine("Players are colliding");
+            }
+            else
+            {
+                // Console.WriteLine("Players are not colliding");
             }
         }
 

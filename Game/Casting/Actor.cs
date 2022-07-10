@@ -10,6 +10,7 @@ namespace Unit06.Game.Casting
         private Color color = Constants.WHITE;
         private Point position = new Point(0, 0);
         private Point velocity = new Point(0, 0);
+        private Point size = new Point(0, 0);
         private Sprite sprite;
 
         /// Constructs a new instance of Actor.
@@ -46,6 +47,34 @@ namespace Unit06.Game.Casting
         {
             return velocity;
         }
+
+        public float GetLeft()
+        {
+            return position.GetX() - size.GetX();
+        }
+
+        public float GetRight()
+        {
+            return position.GetX() + size.GetX();
+        }
+
+        public float GetTop()
+        {
+            return position.GetY() - size.GetY();
+        }
+
+        public float GetBottom()
+        {
+            return position.GetY() + size.GetY();
+        }
+
+        public bool Overlaps(Actor other)
+        {
+            return (this.GetLeft() < other.GetRight() && this.GetRight() > other.GetLeft()
+                 && this.GetTop() < other.GetBottom() && this.GetBottom() > other.GetTop());
+        }
+
+
 
         /// Moves the actor to its next position according to its velocity. Will wrap the position 
         /// from one side of the screen to the other when it reaches the maximum x and y 

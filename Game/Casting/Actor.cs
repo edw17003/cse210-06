@@ -50,7 +50,7 @@ namespace Unit06.Game.Casting
 
         public float GetLeft()
         {
-            return position.GetX() - size.GetX();
+            return position.GetX();
         }
 
         public float GetRight()
@@ -60,7 +60,7 @@ namespace Unit06.Game.Casting
 
         public float GetTop()
         {
-            return position.GetY() - size.GetY();
+            return position.GetY();
         }
 
         public float GetBottom()
@@ -143,6 +143,10 @@ namespace Unit06.Game.Casting
         public void SetSprite(Sprite sprite)
         {
             this.sprite = sprite;
+        }
+        public void SetSize(int x, int y)
+        {
+            this.size = new Point(x, y);
         }
     }
 }

@@ -5,7 +5,6 @@ namespace Unit06.Game.Casting
     public class Player : Actor
     {
         private Point spawn = new Point(0, 0);
-        private Point size = new Point(100, 100);
 
         private int angle = 0;
 
@@ -14,6 +13,7 @@ namespace Unit06.Game.Casting
         {
             SetPosition(spawn);
             SetSprite(sprite);
+            SetSize(64, 64);
         }
 
         public void SetAngle(int angle)

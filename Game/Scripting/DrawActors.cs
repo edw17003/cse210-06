@@ -53,6 +53,8 @@ namespace Unit06.Game.Scripting
                     cast.RemoveActor("bullets2", bullet);
                 }
             }
+            videoService.DrawHealth(player1);
+            videoService.DrawHealth(player2);
             videoService.DrawActors(messages);
             videoService.DrawWalls(walls);
             videoService.FlushBuffer();

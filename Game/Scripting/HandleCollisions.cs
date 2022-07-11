@@ -46,7 +46,7 @@ namespace Unit06.Game.Scripting
             }
         }
 
-        private void HandleWallCollisions(Cast cast)
+        public bool HandleWallCollisions(Cast cast)
         {
             Player player1 = (Player)cast.GetActors("players")[0];
             Player player2 = (Player)cast.GetActors("players")[1];
@@ -57,12 +57,17 @@ namespace Unit06.Game.Scripting
                 if (player1.Overlaps(wall))
                 {
                     Console.WriteLine("Player1 is colliding with a wall.");
+                    player1.SetVelocity(new Point(0, 0));
+                    return true;
                 }
-                if (player2.Overlaps(wall))
+                else if (player2.Overlaps(wall))
                 {
                     Console.WriteLine("Player2 is colliding with a wall.");
+                    player2.SetVelocity(new Point(0, 0));
+                    return true;
                 }
             }
+            return false;
         }
 
 

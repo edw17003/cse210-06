@@ -83,7 +83,7 @@ namespace Unit06.Game.Casting
         {
             int x = ((position.GetX() + velocity.GetX()) + Constants.MAX_X) % Constants.MAX_X;
             int y = ((position.GetY() + velocity.GetY()) + Constants.MAX_Y) % Constants.MAX_Y;
-            position = new Point(x, y);
+            position = new Point(x, y);                    
         }
 
         /// Sets the actor's color to the given value.

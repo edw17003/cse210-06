@@ -8,6 +8,8 @@ namespace Unit06.Game.Casting
         private int cooldown = 60;
         private int angle = 0;
 
+        private int health = 100;
+
         /// Constructs a new instance of Player.
         public Player(Sprite sprite, Point spawn)
         {
@@ -37,6 +39,16 @@ namespace Unit06.Game.Casting
         public int GetCooldown()
         {
             return this.cooldown;
+        }
+
+        public int GetHealth()
+        {
+            return this.health;
+        }
+
+        public void SetHealth(int damage)
+        {
+            this.health -= damage;
         }
     }
 }

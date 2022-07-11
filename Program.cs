@@ -30,7 +30,9 @@ namespace Unit06
             cast.AddActor("swords", new Sword());
             cast.AddActor("swords", new Sword());
 
-
+            audioService.Initialize();
+            audioService.LoadSounds("Game/Assets/Sounds");
+            Sound testSound = new Sound("Assets/Sounds/laser.wav");
 
             // Top Border (x, y, height, width) 1600 x 900
             cast.AddActor("walls", new Wall(0, 0, 1600, 20));
@@ -69,7 +71,7 @@ namespace Unit06
             script.AddAction("update", new MoveActors());
             script.AddAction("update", new HandleCollisions());
             script.AddAction("output", new DrawActors(videoService));
-            //script.AddAction("sound", new PlaySound(audioService, sound));
+            script.AddAction("output", new PlaySound(audioService, testSound));
             // start the game
             Director director = new Director(videoService);
             director.StartGame(cast, script);

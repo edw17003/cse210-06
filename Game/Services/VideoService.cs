@@ -146,5 +146,14 @@ namespace Unit06.Game.Services
                 DrawWall(wall);
             }
         }
+
+        public void DrawHealth(Player player)
+        {
+            int posX = player.GetPosition().GetX();
+            int posY = player.GetPosition().GetY() - 10;
+            int width = (int)(player.GetHealth() / 1.5);
+            int height = 10;
+            Raylib.DrawRectangle(posX, posY, width, height, Raylib_cs.Color.RED);
+        }
     }
 }

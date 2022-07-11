@@ -36,8 +36,8 @@ namespace Unit06.Game.Scripting
             Sword sword1 = (Sword)cast.GetActors("swords")[0];
             Sword sword2 = (Sword)cast.GetActors("swords")[1];
             
-            sword1.SetPosition(player1.GetPosition());
-            sword2.SetPosition(player2.GetPosition());
+            sword1.SetPosition(SwordPosition(player1.GetPosition()));
+            sword2.SetPosition(SwordPosition(player2.GetPosition()));
             sword1.SetSpriteRotation(player1.GetAngle());
             sword2.SetSpriteRotation(player2.GetAngle());
             
@@ -71,6 +71,14 @@ namespace Unit06.Game.Scripting
             {
                 cast.AddActor("bullets2", new Bullet(new Point((int)(gamepadService.GetRightVector(1).X*10), (int)(gamepadService.GetRightVector(1).Y * 10)), player2.GetPosition()));
             }
+        }
+
+        public Point SwordPosition(Point player)
+        {
+            
+            int X = player.GetX() + 27;
+            int Y = player.GetY() + 27;
+            return new Point(X, Y);
         }
     }
 }

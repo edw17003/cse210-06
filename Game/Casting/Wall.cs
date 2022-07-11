@@ -14,6 +14,23 @@ namespace Unit06.Game.Casting
             this.height = height;
             this.SetSize(width, height);
         }
+        
+        public int GetPosX()
+        {
+            return posX;
+        }
+        public int GetPosY()
+        {
+            return posY;
+        }
+        public int GetWidth()
+        {
+            return width;
+        }
+        public int GetHeight()
+        {
+            return height;
+        }
         public override float GetLeft()
         {
             return posX;

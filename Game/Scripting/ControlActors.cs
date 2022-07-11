@@ -21,14 +21,18 @@ namespace Unit06.Game.Scripting
         public void Execute(Cast cast, Script script)
         {
 
-            Point direction = new Point((int)(gamepadService.GetLeftVector(0).X * 5), (int)(gamepadService.GetLeftVector(0).Y * 5));
-            Point direction2 = new Point((int)(gamepadService.GetLeftVector(1).X * 5), (int)(gamepadService.GetLeftVector(1).Y * 5));
+            Point direction = GetDirection(0);
+            Point direction2 = GetDirection(1);
             Player player1 = (Player)cast.GetActors("players")[0];
-            player1.SetVelocity(direction);
             Player player2 = (Player)cast.GetActors("players")[1];
-            player2.SetVelocity(direction2);
-            player1.SetAngle((int)(180/Math.PI * (Math.Atan2(gamepadService.GetRightVector(0).Y, gamepadService.GetRightVector(0).X ))));
-            player2.SetAngle((int)(180/Math.PI * (Math.Atan2(gamepadService.GetRightVector(1).Y, gamepadService.GetRightVector(1).X ))));
+            
+            ControlVelocity(player1, direction);
+            
+            ControlVelocity(player2, direction);
+
+            player1.SetAngle(GetAngle(0));
+            player2.SetAngle(GetAngle(1));
+
             Sword sword1 = (Sword)cast.GetActors("swords")[0];
             Sword sword2 = (Sword)cast.GetActors("swords")[1];
             
@@ -37,6 +41,36 @@ namespace Unit06.Game.Scripting
             sword1.SetSpriteRotation(player1.GetAngle());
             sword2.SetSpriteRotation(player2.GetAngle());
             
+            CreateBullets(cast, player1, player2);
+
+            player1.SetCooldown();
+        }
+
+        public Point GetDirection(int index)
+        {
+            return new Point((int)(gamepadService.GetLeftVector(index).X * 5), (int)(gamepadService.GetLeftVector(index).Y * 5));
+        }
+
+        public void ControlVelocity(Player player, Point direction)
+        {
+            player.SetVelocity(direction);
+        }
+
+        public int GetAngle(int index)
+        {
+            return (int)(180/Math.PI * (Math.Atan2(gamepadService.GetRightVector(index).Y, gamepadService.GetRightVector(index).X )));
+        }
+
+        public void CreateBullets(Cast cast, Player player1, Player player2)
+        {
+            if (gamepadService.IsButtonDown(0, "rt") && player1.GetCooldown() == 0)
+            {
+                cast.AddActor("bullets1", new Bullet(new Point((int)(gamepadService.GetRightVector(0).X*10), (int)(gamepadService.GetRightVector(0).Y * 10)), player1.GetPosition()));
+            }
+            if (gamepadService.IsButtonDown(1, "rt") && player2.GetCooldown() == 0)
+            {
+                cast.AddActor("bullets2", new Bullet(new Point((int)(gamepadService.GetRightVector(1).X*10), (int)(gamepadService.GetRightVector(1).Y * 10)), player2.GetPosition()));
+            }
         }
     }
 }

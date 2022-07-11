@@ -3,7 +3,7 @@ namespace Unit06.Game.Casting
 
     public class Bullet : Actor
     {
-        private Sprite sprite = new Sprite("bullet.png", .5, 0);
+        private Sprite sprite = new Sprite("Game/Assets/Sprites/bullet.png", .5, 0);
         private int lifespan = 400;
         public Bullet(Point direction, Point position)
         {

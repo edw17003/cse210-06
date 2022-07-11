@@ -28,7 +28,7 @@ namespace Unit06.Game.Scripting
             
             ControlVelocity(player1, direction);
             
-            ControlVelocity(player2, direction);
+            ControlVelocity(player2, direction2);
 
             player1.SetAngle(GetAngle(0));
             player2.SetAngle(GetAngle(1));

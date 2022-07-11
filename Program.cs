@@ -68,8 +68,8 @@ namespace Unit06
 
             Script script = new Script();
             script.AddAction("input", new ControlActors(gamepadService));
-            script.AddAction("update", new MoveActors());
             script.AddAction("update", new HandleCollisions());
+            script.AddAction("update", new MoveActors());
             script.AddAction("output", new DrawActors(videoService));
             script.AddAction("output", new PlaySound(audioService, testSound));
             // start the game

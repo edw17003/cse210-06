@@ -20,7 +20,7 @@ namespace Unit06.Game.Scripting
         {
             if (isGameOver == false)
             {
-                HandleSegmentCollisions(cast);
+                
                 HandleGameOver(cast);
                 HandlePlayerCollisions(cast);
                 HandleWallCollisions(cast);
@@ -46,7 +46,7 @@ namespace Unit06.Game.Scripting
             }
         }
 
-        public bool HandleWallCollisions(Cast cast)
+        public void HandleWallCollisions(Cast cast)
         {
             Player player1 = (Player)cast.GetActors("players")[0];
             Player player2 = (Player)cast.GetActors("players")[1];
@@ -54,60 +54,58 @@ namespace Unit06.Game.Scripting
             List<Actor> walls = cast.GetActors("walls");
             foreach (Actor wall in walls)
             {
-                if (player1.Overlaps(wall))
+                if (player1.OverlapsXT(wall))
                 {
                     Console.WriteLine("Player1 is colliding with a wall.");
-                    player1.SetVelocity(new Point(0, 0));
-                    return true;
+                    int YV = player1.GetVelocity().GetY();
+                    if (YV < 0)
+                    {
+                        YV = 0;
+                    }
+                    player1.SetVelocity(new Point(player1.GetVelocity().GetX(), YV));
+                    
                 }
-                else if (player2.Overlaps(wall))
+                if (player1.OverlapsXB(wall))
                 {
-                    Console.WriteLine("Player2 is colliding with a wall.");
-                    player2.SetVelocity(new Point(0, 0));
-                    return true;
+                    Console.WriteLine("Player1 is colliding with a wall.");
+                    int YV = player1.GetVelocity().GetY();
+                    if (YV > 0)
+                    {
+                        YV = 0;
+                    }
+                    player1.SetVelocity(new Point(player1.GetVelocity().GetX(), YV));
+                    
                 }
+                
+                if (player1.OverlapsYL(wall))
+                {
+                    Console.WriteLine("Player1 is colliding with a wall.");
+                    int XV = player1.GetVelocity().GetX();
+                    if (XV < 0)
+                    {
+                        XV = 0;
+                    }
+                    player1.SetVelocity(new Point(XV, player1.GetVelocity().GetY()));
+                    
+                }
+                if (player1.OverlapsYR(wall))
+                {
+                    Console.WriteLine("Player1 is colliding with a wall.");
+                    int XV = player1.GetVelocity().GetX();
+                    if (XV > 0)
+                    {
+                        XV = 0;
+                    }
+                    player1.SetVelocity(new Point(XV, player1.GetVelocity().GetY()));
+                    
+                }
+                
             }
-            return false;
-        }
-
-
-        /// <summary>
-        /// Sets the game over flag if a cycle collides with a trail
-        /// </summary>
-        /// <param name="cast">The cast of actors.</param>
-        private void HandleSegmentCollisions(Cast cast)
-        {
             
-            Player player1 = (Player) cast.GetFirstOfKey("player1");
-            Player player2 = (Player) cast.GetFirstOfKey("player2");
-            // Actor head1 = player1.GetCycle();
-            // Actor head2 = player2.GetCycle();
-            // List<Actor> body1 = player1.GetSegments();
-            // List<Actor> body2 = player2.GetSegments();
-
-            // foreach (Actor segment in body1.Skip(1))
-            // {
-            //     if (segment.GetPosition().Equals(player1.GetPosition()))
-            //     {
-            //         isGameOver = true;
-            //     }
-            //     if (segment.GetPosition().Equals(player2.GetPosition()))
-            //     {
-            //         isGameOver = true;
-            //     }
-            // }
-            // foreach (Actor segment in body2.Skip(1))
-            // {
-            //     if (segment.GetPosition().Equals(head1.GetPosition()))
-            //     {
-            //         isGameOver = true;
-            //     }
-            //     if (segment.GetPosition().Equals(head2.GetPosition()))
-            //     {
-            //         isGameOver = true;
-            //     }
-            // }  
         }
+
+
+
         
 
         // Handles what happens if the game ends.

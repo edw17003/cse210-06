@@ -74,6 +74,30 @@ namespace Unit06.Game.Casting
                  && this.GetTop() < other.GetBottom() && this.GetBottom() > other.GetTop());
         }
 
+        public bool OverlapsYL(Actor other)
+        {
+            return (this.GetLeft() - 5 < other.GetRight() && this.GetRight() > other.GetLeft()
+                 && this.GetTop() < other.GetBottom() && this.GetBottom() > other.GetTop());
+        }
+
+        public bool OverlapsXT(Actor other)
+        {
+            return (this.GetLeft() < other.GetRight() && this.GetRight() > other.GetLeft()
+                 && this.GetTop() - 5 < other.GetBottom() && this.GetBottom() > other.GetTop());
+        }
+
+        public bool OverlapsYR(Actor other)
+        {
+            return (this.GetLeft() < other.GetRight() && this.GetRight() + 5 > other.GetLeft()
+                 && this.GetTop() < other.GetBottom() && this.GetBottom() > other.GetTop());
+        }
+
+        public bool OverlapsXB(Actor other)
+        {
+            return (this.GetLeft() < other.GetRight() && this.GetRight() > other.GetLeft()
+                 && this.GetTop() < other.GetBottom() && this.GetBottom() + 5> other.GetTop());
+        }
+
 
 
         /// Moves the actor to its next position according to its velocity. Will wrap the position 

@@ -30,38 +30,35 @@ namespace Unit06
             cast.AddActor("swords", new Sword());
             cast.AddActor("swords", new Sword());
 
-            // Debug wall for collision testing
-            // cast.AddActor("walls", new Wall(200, 200, 100, 100));
+
 
             // Top Border (x, y, height, width) 1600 x 900
-            cast.AddActor("walls", new Wall(0, 0, 20, 1600));
+            cast.AddActor("walls", new Wall(0, 0, 1600, 20));
             // Left Border
-            cast.AddActor("walls", new Wall(0, 0, 900, 20));
+            cast.AddActor("walls", new Wall(0, 0, 20, 900));
             // Bottom Border
-            cast.AddActor("walls", new Wall(0, 880, 20, 1600));
+            cast.AddActor("walls", new Wall(0, 880, 1600, 20));
             // Right Border
-            cast.AddActor("walls", new Wall(1580, 0, 900, 20));
-            
-            
+            cast.AddActor("walls", new Wall(1580, 0, 20, 900));
 
             // Left-vertical barrier
-            cast.AddActor("walls", new Wall(300, 175, 550, 20));
+            cast.AddActor("walls", new Wall(300, 175, 20, 550));
             // Right-vertical barrier
-            cast.AddActor("walls", new Wall(1300, 175, 550, 20));
+            cast.AddActor("walls", new Wall(1300, 175, 20, 550));
             // Left-horizontal barrier
-            cast.AddActor("walls", new Wall(220, 725, 20, 600));
+            cast.AddActor("walls", new Wall(220, 725, 600, 20));
             // Right-horizontal barrier
-            cast.AddActor("walls", new Wall(800, 175, 20, 600));
+            cast.AddActor("walls", new Wall(800, 175, 600, 20));
 
             // Left-vertical nub
-            cast.AddActor("walls", new Wall(220, 250, 20, 80));
+            cast.AddActor("walls", new Wall(220, 250, 80, 20));
             // right-vertical nub
-            cast.AddActor("walls", new Wall(1320, 625, 20, 80));
+            cast.AddActor("walls", new Wall(1320, 625, 80, 20));
             // Left-horizontal nub
-            cast.AddActor("walls", new Wall(740, 725, 80, 20));
+            cast.AddActor("walls", new Wall(740, 725, 20, 80));
             // Right-horizontal nub
-            cast.AddActor("walls", new Wall(880, 115, 80, 20));
-
+            cast.AddActor("walls", new Wall(880, 115, 20, 80));
+            
             //Sound sound = new Sound("laser.wav", 1, true);
             
             

@@ -6,7 +6,7 @@ namespace Unit06.Game.Casting
         private int posY;
         private int width;
         private int height;
-        public Wall(int posX, int posY, int height, int width)
+        public Wall(int posX, int posY, int width, int height)
         {
             this.posX = posX;
             this.posY = posY;
@@ -37,7 +37,7 @@ namespace Unit06.Game.Casting
         }
         public override float GetRight()
         {
-            return GetPosY() + GetWidth();
+            return GetPosX() + GetWidth();
         }
         public override float GetTop()
         {

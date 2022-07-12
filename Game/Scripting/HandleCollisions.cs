@@ -40,8 +40,6 @@ namespace Unit06.Game.Scripting
                 if (player == (cast.GetActors("players")[0]))
                 {
                     otherPlayer = player2;
-                } else {
-                    otherPlayer = player1;
                 }
                 if (player.OverlapsTop(otherPlayer))
                 {

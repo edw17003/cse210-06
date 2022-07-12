@@ -15,7 +15,7 @@ namespace Unit06.Game.Casting
         {
             SetPosition(spawn);
             SetSprite(sprite);
-            SetSize(64, 64);
+            SetSize(34, 34);
         }
 
         public void SetAngle(int angle)

@@ -1,4 +1,5 @@
 using Unit06.Game.Casting;
+using Unit06.Game.Services;
 
 
 namespace Unit06.Game.Scripting
@@ -18,6 +19,8 @@ namespace Unit06.Game.Scripting
         {
             List<Actor> players = cast.GetActors("players"); 
             List<Actor> swords = cast.GetActors("swords");
+            Sword sword1 = (Sword) swords[0];
+            Sword sword2 = (Sword) swords[1];
 
             foreach (Player player in players)
             {
@@ -27,6 +30,15 @@ namespace Unit06.Game.Scripting
             foreach (Sword sword in swords)
             {
                 sword.SetCooldown();
+            }
+
+            if (sword1.GetIsThrown())
+            {
+                sword1.SetVelocity();
+            }
+            if (sword2.GetIsThrown())
+            {
+                
             }
         }
     }

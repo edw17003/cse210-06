@@ -20,29 +20,65 @@ namespace Unit06.Game.Scripting
         {
             if (isGameOver == false)
             {
-                
                 HandleGameOver(cast);
                 HandlePlayerCollisions(cast);
                 HandleWallCollisions(cast);
-                // debug(cast);
             }
-        }
-        private void debug(Cast cast)
-        {
-            Wall firstWall = (Wall) cast.GetFirstOfKey("walls");
-            float l = firstWall.GetLeft();
-            float r = firstWall.GetRight();
-            float t = firstWall.GetTop();
-            float b = firstWall.GetBottom();
-            Console.WriteLine($"L:{l}, R:{r}, T:{t}, B:{b}");
         }
         private void HandlePlayerCollisions(Cast cast)
         {
             Player player1 = (Player)cast.GetActors("players")[0];
             Player player2 = (Player)cast.GetActors("players")[1];
-            if (player1.Overlaps(player2))
+            List<Player> players = new List<Player>();
+            players.Add(player1);
+            players.Add(player2);
+
+            Player otherPlayer = player1;
+            
+            foreach (Player player in players)
             {
-                Console.WriteLine("Player1 is colliding with player2");
+                if (player == (cast.GetActors("players")[0]))
+                {
+                    otherPlayer = player2;
+                } else {
+                    otherPlayer = player1;
+                }
+                if (player.OverlapsTop(otherPlayer))
+                {
+                    int yVelocity = player.GetVelocity().GetY();
+                    if (yVelocity < 0)
+                    {
+                        yVelocity = 0;
+                    }
+                    player.SetVelocity(new Point(player.GetVelocity().GetX(), yVelocity));
+                }
+                if (player.OverlapsBottom(otherPlayer))
+                {
+                    int yVelocity = player.GetVelocity().GetY();
+                    if (yVelocity > 0)
+                    {
+                        yVelocity = 0;
+                    }
+                    player.SetVelocity(new Point(player.GetVelocity().GetX(), yVelocity));   
+                }
+                if (player.OverlapsLeft(otherPlayer))
+                {
+                    int xVelocity = player.GetVelocity().GetX();
+                    if (xVelocity < 0)
+                    {
+                        xVelocity = 0;
+                    }
+                    player.SetVelocity(new Point(xVelocity, player.GetVelocity().GetY()));  
+                }
+                if (player.OverlapsRight(otherPlayer))
+                {
+                    int xVelocity = player.GetVelocity().GetX();
+                    if (xVelocity > 0)
+                    {
+                        xVelocity = 0;
+                    }
+                    player.SetVelocity(new Point(xVelocity, player.GetVelocity().GetY())); 
+                }
             }
         }
 
@@ -50,58 +86,53 @@ namespace Unit06.Game.Scripting
         {
             Player player1 = (Player)cast.GetActors("players")[0];
             Player player2 = (Player)cast.GetActors("players")[1];
+            List<Player> players = new List<Player>();
+            players.Add(player1);
+            players.Add(player2);
 
             List<Actor> walls = cast.GetActors("walls");
-            foreach (Actor wall in walls)
+            foreach (Player player in players)
             {
-                if (player1.OverlapsXT(wall))
+                foreach (Actor wall in walls)
                 {
-                    Console.WriteLine("Player1 is colliding with a wall.");
-                    int YV = player1.GetVelocity().GetY();
-                    if (YV < 0)
+                    if (player.OverlapsTop(wall))
                     {
-                        YV = 0;
+                        int yVelocity = player.GetVelocity().GetY();
+                        if (yVelocity < 0)
+                        {
+                            yVelocity = 0;
+                        }
+                        player.SetVelocity(new Point(player.GetVelocity().GetX(), yVelocity));
                     }
-                    player1.SetVelocity(new Point(player1.GetVelocity().GetX(), YV));
-                    
-                }
-                if (player1.OverlapsXB(wall))
-                {
-                    Console.WriteLine("Player1 is colliding with a wall.");
-                    int YV = player1.GetVelocity().GetY();
-                    if (YV > 0)
+                    if (player.OverlapsBottom(wall))
                     {
-                        YV = 0;
+                        int yVelocity = player.GetVelocity().GetY();
+                        if (yVelocity > 0)
+                        {
+                            yVelocity = 0;
+                        }
+                        player.SetVelocity(new Point(player.GetVelocity().GetX(), yVelocity));   
                     }
-                    player1.SetVelocity(new Point(player1.GetVelocity().GetX(), YV));
-                    
-                }
-                
-                if (player1.OverlapsYL(wall))
-                {
-                    Console.WriteLine("Player1 is colliding with a wall.");
-                    int XV = player1.GetVelocity().GetX();
-                    if (XV < 0)
+                    if (player.OverlapsLeft(wall))
                     {
-                        XV = 0;
+                        int xVelocity = player.GetVelocity().GetX();
+                        if (xVelocity < 0)
+                        {
+                            xVelocity = 0;
+                        }
+                        player.SetVelocity(new Point(xVelocity, player.GetVelocity().GetY()));  
                     }
-                    player1.SetVelocity(new Point(XV, player1.GetVelocity().GetY()));
-                    
-                }
-                if (player1.OverlapsYR(wall))
-                {
-                    Console.WriteLine("Player1 is colliding with a wall.");
-                    int XV = player1.GetVelocity().GetX();
-                    if (XV > 0)
+                    if (player.OverlapsRight(wall))
                     {
-                        XV = 0;
-                    }
-                    player1.SetVelocity(new Point(XV, player1.GetVelocity().GetY()));
-                    
+                        int xVelocity = player.GetVelocity().GetX();
+                        if (xVelocity > 0)
+                        {
+                            xVelocity = 0;
+                        }
+                        player.SetVelocity(new Point(xVelocity, player.GetVelocity().GetY())); 
+                    } 
                 }
-                
-            }
-            
+            } 
         }
 
 

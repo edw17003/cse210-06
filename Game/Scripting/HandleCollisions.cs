@@ -34,7 +34,7 @@ namespace Unit06.Game.Scripting
             players.Add(player2);
 
             Player otherPlayer = player1;
-            
+
             foreach (Player player in players)
             {
                 if (player == (cast.GetActors("players")[0]))

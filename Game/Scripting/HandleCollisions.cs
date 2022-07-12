@@ -97,7 +97,6 @@ namespace Unit06.Game.Scripting
                         XV = 0;
                     }
                     player1.SetVelocity(new Point(XV, player1.GetVelocity().GetY()));
-                    
                 }
                 
             }

@@ -38,8 +38,8 @@ namespace Unit06.Game.Scripting
             
             PositionSword(sword1, player1);
             PositionSword(sword2, player2);
-            ThrowSword(sword1, 1);
-            ThrowSword(sword2, 2);
+            ThrowSword(sword1, 0);
+            ThrowSword(sword2, 1);
 
             player1.SetCooldown();
         }

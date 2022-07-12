@@ -5,7 +5,7 @@ namespace Unit06.Game.Casting
     public class Player : Actor
     {
         private Point spawn = new Point(0, 0);
-        private int cooldown = 60;
+        private int cooldown = 120;
         private int angle = 0;
 
         private int health = 100;
@@ -30,7 +30,7 @@ namespace Unit06.Game.Casting
 
         public void SetCooldown()
         {
-            if (cooldown > 60)
+            if (cooldown > 0)
             {
                 cooldown--;
             }

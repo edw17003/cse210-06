@@ -98,8 +98,6 @@ namespace Unit06.Game.Casting
                  && this.GetTop() < other.GetBottom() && this.GetBottom() + 5> other.GetTop());
         }
 
-
-
         /// Moves the actor to its next position according to its velocity. Will wrap the position 
         /// from one side of the screen to the other when it reaches the maximum x and y 
         /// values.

@@ -42,7 +42,7 @@ namespace Unit06.Game.Scripting
             Player player2 = (Player)cast.GetActors("players")[1];
             if (player1.Overlaps(player2))
             {
-                Console.WriteLine("Player1 is colliding with player2");
+                // Console.WriteLine("Player1 is colliding with player2");
             }
         }
 
@@ -104,9 +104,26 @@ namespace Unit06.Game.Scripting
             
         }
 
+        public void HandlePlayerSwordCollisions(Cast cast)
+        {
+            Player player1 = (Player)cast.GetActors("players")[0];
+            Player player2 = (Player)cast.GetActors("players")[1];
+            Sword sword1 = (Sword) cast.GetActors("swords")[0];
+            Sword sword2 = (Sword) cast.GetActors("swords")[1];
 
-
-        
+            if (player1.Overlaps(sword2))
+                {
+                      player1.SetHealth(25);
+                      player1.SetCooldown();
+                      Console.WriteLine("Sword2 Colliding with Player1");               
+                }
+            if (player2.Overlaps(sword1))
+                {
+                      player2.SetHealth(25);
+                      player2.SetCooldown();
+                      Console.WriteLine("Sword1 Colliding with Player2");
+                }
+        }
 
         // Handles what happens if the game ends.
         // Turns the cycles and their trails white and 

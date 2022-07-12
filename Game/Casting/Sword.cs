@@ -7,7 +7,8 @@ namespace Unit06.Game.Casting
 
         /// Constructs a new instance of Player.
         private Sprite sprite = new Sprite("Game/Assets/Sprites/sword.png", 1, 180);
-        private int cooldown = 360;
+        private int cooldown = 0;
+        private int cdStart = 120;
 
         private bool thrown = false;
         
@@ -25,10 +26,11 @@ namespace Unit06.Game.Casting
 
         public void SetIsThrown(bool thrown)
         {
-            if (thrown)
-            {
-                this.thrown = true;
-            }
+            this.thrown = thrown;
+            if (this.thrown)
+            { 
+                StartCooldown();
+            } 
         }
 
         public bool GetIsThrown()
@@ -38,12 +40,27 @@ namespace Unit06.Game.Casting
 
         public void SetCooldown()
         {
-            this.cooldown--;
+            if (cooldown > 0) {
+                this.cooldown--;
+            }
+            
             if (this.cooldown == 0)
             {
                 this.thrown = false;
             }
         }
 
+        public int GetcdStart()
+        {
+            return this.cdStart;
+        }
+        public int GetCooldown()
+        {
+            return this.cooldown;
+        }
+        private void StartCooldown()
+        {
+            this.cooldown = cdStart;
+        }
     }
 }

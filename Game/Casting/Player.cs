@@ -5,7 +5,8 @@ namespace Unit06.Game.Casting
     public class Player : Actor
     {
         private Point spawn = new Point(0, 0);
-        private int cooldown = 120;
+        private int cooldown = 0;
+        private int cdStart = 120;
         private int angle = 0;
 
         private int health = 100;
@@ -34,6 +35,11 @@ namespace Unit06.Game.Casting
             {
                 cooldown--;
             }
+        }
+
+        public void StartCooldown()
+        {
+            this.cooldown = cdStart;
         }
 
         public int GetCooldown()

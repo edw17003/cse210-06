@@ -61,7 +61,7 @@ namespace Unit06.Game.Scripting
 
         private void ThrowSword(Sword sword, int index)
         {
-            if (gamepadService.IsButtonDown(index, "rt") && sword.GetIsThrown() == false)
+            if (gamepadService.IsButtonDown(index, "rt") && sword.GetIsThrown() == false && sword.GetCooldown() == 0)
             {
                 sword.SetIsThrown(true);
                 sword.SetVelocity(new Point((int)(gamepadService.GetRightVector(index).X*10), (int)(gamepadService.GetRightVector(0).Y * 10)));

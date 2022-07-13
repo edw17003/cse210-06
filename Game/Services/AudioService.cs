@@ -61,7 +61,7 @@ namespace Unit06.Game.Services
         {
             bool IsPlaying = false;
             string filename = sound.GetFilename();
-            if (music.ContainsKey(filename))
+            if (sounds.ContainsKey(filename))
             {
                 Raylib_cs.Sound raylibSound = sounds[filename];
                 IsPlaying = Raylib.IsSoundPlaying(raylibSound);

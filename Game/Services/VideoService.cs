@@ -35,9 +35,9 @@ namespace Unit06.Game.Services
         {
             Raylib.BeginDrawing();
             Raylib.ClearBackground(Raylib_cs.Color.BEIGE);
-            Raylib.UnloadTexture(background);
-            // Raylib.DrawTexture(Raylib.LoadTexture(Constants.backgroundPath), 0, 0, Raylib_cs.Color.BEIGE);
-            Raylib.DrawTexture(background, 0, 0, Raylib_cs.Color.BEIGE);
+            // Raylib.UnloadTexture(background);
+            // Raylib.DrawTexture(Raylib.LoadTexture(Constants.backgroundPath), 0, 0, Raylib_cs.Color.WHITE);
+            Raylib.DrawTexture(background, 0, 0, Raylib_cs.Color.WHITE);
             if (debug) {}
         }
 

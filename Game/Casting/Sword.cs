@@ -9,13 +9,14 @@ namespace Unit06.Game.Casting
         private Sprite sprite = new Sprite("Game/Assets/Sprites/sword.png", 1, 180);
         private int cooldown = 0;
         private int cdStart = 120;
-
+        private int[] neutralSize = new int[] {64, 10};
         private bool thrown = false;
         
         public Sword()
         {
             
             SetSprite(sprite);
+            SetSize(neutralSize[0], neutralSize[1]);
             
         }
 
@@ -23,6 +24,13 @@ namespace Unit06.Game.Casting
         {
             this.sprite.SetRotation(rotate);
         }
+
+        public int[] GetNeutralSize()
+        {
+            return this.neutralSize;
+        }
+
+        
 
         public void SetIsThrown(bool thrown)
         {

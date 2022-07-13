@@ -26,15 +26,12 @@ namespace Unit06.Game.Scripting
                 Point direction = GetDirection(index);
                 ControlVelocity(player, direction);
                 player.SetAngle(GetAngle(index));
-                if (player.GetVelocity().GetX() > 0)
-                {
-                    player.GetSprite().SetFlip(false);
-                } else {
-                    player.GetSprite().SetFlip(true);
-                }
                 Sword sword = (Sword)cast.GetActors("swords")[index];
                 PositionSword(sword, player);
                 ThrowSword(sword, index);
+                //sword.SetSize((int)(Math.Cos(GetAngle(index)) * sword.GetNeutralSize()[0] + Math.Sin(GetAngle(index)) * sword.GetNeutralSize()[1]), (int)(Math.Sin(GetAngle(index)) * sword.GetNeutralSize()[0] + Math.Cos(GetAngle(index)) * sword.GetNeutralSize()[1]));
+                
+                //Console.WriteLine($"{sword.GetSize().GetX()}, {sword.GetSize().GetY()}");
                 index++;
             }
         }

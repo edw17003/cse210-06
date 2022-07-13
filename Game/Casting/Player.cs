@@ -8,6 +8,7 @@ namespace Unit06.Game.Casting
         private int cooldown = 0;
         private int cdStart = 120;
         private int angle = 0;
+        
 
         private int health = 100;
 
@@ -16,7 +17,7 @@ namespace Unit06.Game.Casting
         {
             SetPosition(spawn);
             SetSprite(sprite);
-            SetSize(34, 34);
+            SetSize(64, 64);
         }
 
         public void SetAngle(int angle)

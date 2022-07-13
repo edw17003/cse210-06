@@ -57,6 +57,17 @@ namespace Unit06.Game.Services
                 Raylib.PlaySound(raylibSound);
             }
         }
+        public bool IsSoundPlaying(Casting.Sound sound)
+        {
+            bool IsPlaying = false;
+            string filename = sound.GetFilename();
+            if (music.ContainsKey(filename))
+            {
+                Raylib_cs.Sound raylibSound = sounds[filename];
+                IsPlaying = Raylib.IsSoundPlaying(raylibSound);
+            }
+            return IsPlaying;
+        }
         public bool IsMusicPlaying(Casting.Sound sound)
         {
             bool IsPlaying = false;

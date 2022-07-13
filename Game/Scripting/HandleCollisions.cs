@@ -68,7 +68,10 @@ namespace Unit06.Game.Scripting
                     if (yVelocity < 0)
                     {
                         yVelocity = 0;
-                        audioService.PlaySound(laserSound);
+                        if (!audioService.IsSoundPlaying(laserSound))
+                        {
+                            audioService.PlaySound(laserSound);
+                        }
                     }
                     player.SetVelocity(new Point(player.GetVelocity().GetX(), yVelocity));
                 }

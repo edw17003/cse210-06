@@ -10,7 +10,6 @@ namespace Unit06.Game.Services
         private bool debug = false;
         private Dictionary<string, Raylib_cs.Texture2D> textures
             = new Dictionary<string, Raylib_cs.Texture2D>();
-        Texture2D background = Raylib.LoadTexture(Constants.backgroundPath);
 
         /// Constructs a new instance of KeyboardService using the given cell size.
         public VideoService(bool debug)
@@ -24,10 +23,6 @@ namespace Unit06.Game.Services
             Raylib.CloseWindow();
         }
 
-        public Texture2D GetBackground()
-        {
-            return this.background;
-        }
 
         /// Clears the buffer in preparation for the next rendering. This method should be called at
         /// the beginning of the game's output phase.
@@ -35,9 +30,6 @@ namespace Unit06.Game.Services
         {
             Raylib.BeginDrawing();
             Raylib.ClearBackground(Raylib_cs.Color.BEIGE);
-            Raylib.UnloadTexture(background);
-            // Raylib.DrawTexture(Raylib.LoadTexture(Constants.backgroundPath), 0, 0, Raylib_cs.Color.BEIGE);
-            Raylib.DrawTexture(background, 0, 0, Raylib_cs.Color.BEIGE);
             if (debug) {}
         }
 
@@ -168,6 +160,17 @@ namespace Unit06.Game.Services
             int width = (int)(player.GetHealth() / 1.5);
             int height = 10;
             Raylib.DrawRectangle(posX, posY, width, height, Raylib_cs.Color.RED);
+        }
+        public void DrawBackground()
+        {
+            string filename = Constants.backgroundPath;
+            if (!textures.ContainsKey(filename))
+            {
+                Raylib_cs.Texture2D loaded = Raylib.LoadTexture(filename);
+                textures[filename] = loaded;
+            }
+            Raylib_cs.Texture2D texture = textures[filename];
+            Raylib.DrawTexture(texture, 0, 0, Raylib_cs.Color.WHITE);
         }
     }
 }

@@ -1,5 +1,6 @@
 using Unit06.Game.Casting;
 using Unit06.Game.Services;
+using Raylib_cs;
 
 
 namespace Unit06.Game.Scripting
@@ -28,6 +29,7 @@ namespace Unit06.Game.Scripting
             Sprite sprite2 = player2.GetSprite();
             
             videoService.ClearBuffer();
+            videoService.DrawBackground();
             videoService.DrawImage(players[0].GetSprite(), players[0].GetPosition());
             videoService.DrawImage(players[1].GetSprite(), players[1].GetPosition());
             

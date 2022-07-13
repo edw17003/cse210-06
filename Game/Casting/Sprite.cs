@@ -6,6 +6,7 @@ namespace Unit06.Game.Casting
         private string filename;
         private double scale;
         private int rotation;
+        private bool flip = false;
 
         /// Constructs a new instance of Image.
         public Sprite(string filename, double scale = 1.0, int rotation = 0)
@@ -31,6 +32,17 @@ namespace Unit06.Game.Casting
         public double GetScale()
         {
             return scale;
+        }
+
+        //flip the sprite
+        public void SetFlip(bool flip)
+        {
+            this.flip = flip;
+        }
+        //Get whether the sprite is flipped
+        public bool GetFlip()
+        {
+            return this.flip;
         }
 
         /// Sets the rotation to the given value.

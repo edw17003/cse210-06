@@ -20,28 +20,23 @@ namespace Unit06.Game.Scripting
         /// 
         public void Execute(Cast cast, Script script)
         {
-
-            Point direction = GetDirection(0);
-            Point direction2 = GetDirection(1);
-            Player player1 = (Player)cast.GetActors("players")[0];
-            Player player2 = (Player)cast.GetActors("players")[1];
-            
-            ControlVelocity(player1, direction);
-            
-            ControlVelocity(player2, direction2);
-
-            player1.SetAngle(GetAngle(0));
-            player2.SetAngle(GetAngle(1));
-
-            Sword sword1 = (Sword)cast.GetActors("swords")[0];
-            Sword sword2 = (Sword)cast.GetActors("swords")[1];
-            
-            PositionSword(sword1, player1);
-            PositionSword(sword2, player2);
-            ThrowSword(sword1, 0);
-            ThrowSword(sword2, 1);
-
-            player1.SetCooldown();
+            int index = 0;
+            foreach( Player player in cast.GetActors("players"))
+            {
+                Point direction = GetDirection(index);
+                ControlVelocity(player, direction);
+                player.SetAngle(GetAngle(index));
+                if (player.GetVelocity().GetX() > 0)
+                {
+                    player.GetSprite().SetFlip(false);
+                } else {
+                    player.GetSprite().SetFlip(true);
+                }
+                Sword sword = (Sword)cast.GetActors("swords")[index];
+                PositionSword(sword, player);
+                ThrowSword(sword, index);
+                index++;
+            }
         }
 
         private Point GetDirection(int index)

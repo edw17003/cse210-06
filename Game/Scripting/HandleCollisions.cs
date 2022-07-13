@@ -162,13 +162,13 @@ namespace Unit06.Game.Scripting
             Sword sword1 = (Sword) cast.GetActors("swords")[0];
             Sword sword2 = (Sword) cast.GetActors("swords")[1];
 
-            if (player1.Overlaps(sword2) && player2.GetCooldown() == 0)
+            if (player1.Overlaps(sword2) ) //&& player2.GetCooldown() == 0
                 {
                       player1.SetHealth(25);
                       player1.StartCooldown();
-                      Console.WriteLine("Sword2 Colliding with Player1");               
+                      Console.WriteLine("Sword2 Colliding with Player1");             
                 }
-            if (player2.Overlaps(sword1) && player2.GetCooldown() == 0)
+            if (player2.Overlaps(sword1) ) //&& player2.GetCooldown() == 0
                 {
                       player2.SetHealth(25);
                       player2.StartCooldown();

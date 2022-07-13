@@ -54,6 +54,7 @@ namespace Unit06.Game.Casting
         {
             return this.cdStart;
         }
+
         public int GetCooldown()
         {
             return this.cooldown;
@@ -61,6 +62,13 @@ namespace Unit06.Game.Casting
         private void StartCooldown()
         {
             this.cooldown = cdStart;
+        }
+        public void DecreaseVelocity()
+        {
+            if (cooldown > 0)
+            {
+            // SetVelocity(new Point((int)(GetVelocity().GetX() - cdStart/(cooldown+1)), (int)(GetVelocity().GetY() - cdStart/(cooldown + 1))));
+            }
         }
     }
 }

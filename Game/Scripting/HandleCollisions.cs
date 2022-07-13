@@ -41,6 +41,7 @@ namespace Unit06.Game.Scripting
                 { 
                     if (sword.Overlaps(wall)) 
                     {
+                        Console.WriteLine("sword colliding with wall");
                         sword.SetIsThrown(false);
                     }
                 }
@@ -165,14 +166,14 @@ namespace Unit06.Game.Scripting
             Sword sword1 = (Sword) cast.GetActors("swords")[0];
             Sword sword2 = (Sword) cast.GetActors("swords")[1];
 
-            if (player1.Overlaps(sword2) ) //&& player2.GetCooldown() == 0
+            if (player1.Overlaps(sword2) && player2.GetCooldown() == 0)
                 {
                       player1.SetHealth(25);
                       player1.StartCooldown();
                       Console.WriteLine("Sword2 Colliding with Player1");
                       sword2.SetIsThrown(false);           
                 }
-            if (player2.Overlaps(sword1) ) //&& player2.GetCooldown() == 0
+            if (player2.Overlaps(sword1) && player2.GetCooldown() == 0)
                 {
                       player2.SetHealth(25);
                       player2.StartCooldown();

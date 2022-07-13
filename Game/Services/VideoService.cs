@@ -62,10 +62,15 @@ namespace Unit06.Game.Services
                 textures[filename] = loaded;
             }
             Raylib_cs.Texture2D texture = textures[filename];
+            int scale = -1;
+            if (image.GetFlip())
+            {
+                scale = 1;
+            }
             int x = position.GetX();
             int y = position.GetY();
             Vector2 pos= new Vector2(x, y);
-            Raylib.DrawTextureEx(texture, pos, image.GetRotation(), 1, Raylib_cs.Color.WHITE);
+            Raylib.DrawTextureEx(texture, pos, image.GetRotation(), scale, Raylib_cs.Color.WHITE);
         }
 
         /// Draws the given list of actors on the screen.

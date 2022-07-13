@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.IO;
 using Raylib_cs;
 
 
@@ -9,6 +7,8 @@ namespace Unit06.Game.Services
     {
         private Dictionary<string, Raylib_cs.Sound> sounds 
             = new Dictionary<string, Raylib_cs.Sound>();
+
+        private Dictionary<string, Raylib_cs.Music> music = new Dictionary<string, Raylib_cs.Music>();
         
         /// <summary>
         /// Constructs a new RaylibAudioService.
@@ -34,6 +34,16 @@ namespace Unit06.Game.Services
                 sounds[filepath] = sound;
             }
         }
+     public void LoadMusic(string directory)
+        {
+            List<string> filters = new List<string>() { "*.wav", "*.mp3", "*.acc", "*.wma" };
+            List<string> filepaths = GetFilepaths(directory, filters);
+            foreach (string filepath in filepaths)
+            {
+                Raylib_cs.Music song = Raylib.LoadMusicStream(filepath);
+                music[filepath] = song;
+            }
+        }
  
         /// </inheritdoc>
         public void PlaySound(Casting.Sound sound)
@@ -43,6 +53,46 @@ namespace Unit06.Game.Services
             {
                 Raylib_cs.Sound raylibSound = sounds[filename];
                 Raylib.PlaySound(raylibSound);
+            }
+        }
+        public bool IsSoundPlaying(Casting.Sound sound)
+        {
+            bool IsPlaying = false;
+            string filename = sound.GetFilename();
+            if (sounds.ContainsKey(filename))
+            {
+                Raylib_cs.Sound raylibSound = sounds[filename];
+                IsPlaying = Raylib.IsSoundPlaying(raylibSound);
+            }
+            return IsPlaying;
+        }
+        public bool IsMusicPlaying(Casting.Sound sound)
+        {
+            bool IsPlaying = false;
+            string filename = sound.GetFilename();
+            if (music.ContainsKey(filename))
+            {
+                Raylib_cs.Music raylibMusic = music[filename];
+                IsPlaying = Raylib.IsMusicStreamPlaying(raylibMusic);
+            }
+            return IsPlaying;
+        }
+        public void PlayMusic(Casting.Sound sound)
+        {
+            string filename = sound.GetFilename();
+            if (music.ContainsKey(filename))
+            {
+                Raylib_cs.Music raylibMusic = music[filename];
+                Raylib.PlayMusicStream(raylibMusic);
+            }
+        }
+        public void UpdateMusic(Casting.Sound sound)
+        {
+            string filename = sound.GetFilename();
+            if (music.ContainsKey(filename))
+            {
+                Raylib_cs.Music raylibMusic = music[filename];
+                Raylib.UpdateMusicStream(raylibMusic);
             }
         }
 

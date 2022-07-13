@@ -1,4 +1,5 @@
 using Unit06.Game.Casting;
+using Unit06.Game.Services;
 
 
 namespace Unit06.Game.Scripting
@@ -7,12 +8,15 @@ namespace Unit06.Game.Scripting
     public class HandleCollisions : Action
     {
         private bool isGameOver = false;
+        private AudioService audioService;
+        private Sound laserSound = new Sound("Game/Assets/Sounds\\laser.wav");
 
         /// <summary>
         /// Constructs a new instance of HandleCollisionsAction.
         /// </summary>
-        public HandleCollisions()
+        public HandleCollisions(AudioService audioService)
         {
+            this.audioService = audioService;
         }
 
         /// <inheritdoc/>
@@ -65,6 +69,10 @@ namespace Unit06.Game.Scripting
                     if (yVelocity < 0)
                     {
                         yVelocity = 0;
+                        if (!audioService.IsSoundPlaying(laserSound))
+                        {
+                            audioService.PlaySound(laserSound);
+                        }
                     }
                     player.SetVelocity(new Point(player.GetVelocity().GetX(), yVelocity));
                 }
@@ -162,13 +170,15 @@ namespace Unit06.Game.Scripting
                 {
                       player1.SetHealth(25);
                       player1.StartCooldown();
-                      Console.WriteLine("Sword2 Colliding with Player1");             
+                      Console.WriteLine("Sword2 Colliding with Player1");
+                      sword2.SetIsThrown(false);           
                 }
             if (player2.Overlaps(sword1) && player2.GetCooldown() == 0)
                 {
                       player2.SetHealth(25);
                       player2.StartCooldown();
                       Console.WriteLine("Sword1 Colliding with Player2");
+                      sword1.SetIsThrown(false);
                 }
         }
 
@@ -181,8 +191,6 @@ namespace Unit06.Game.Scripting
             {
                 Player player1 = (Player)cast.GetFirstOfKey("player1");
                 Player player2 = (Player)cast.GetFirstOfKey("player2");
-                // List<Actor> body1 = player1.GetSegments();
-                // List<Actor> body2 = player2.GetSegments();
 
                 // create a "game over" message
                 int x = Constants.MAX_X / 2 - 110;

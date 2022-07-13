@@ -32,7 +32,7 @@ namespace Unit06
 
             audioService.Initialize();
             audioService.LoadSounds("Game/Assets/Sounds");
-            Sound testSound = new Sound("Assets/Sounds/laser.wav");
+            audioService.LoadMusic("Game/Assets/Music");
 
             // Top Border (x, y, height, width) 1600 x 900
             cast.AddActor("walls", new Wall(0, 0, 1600, 20));
@@ -68,11 +68,11 @@ namespace Unit06
 
             Script script = new Script();
             script.AddAction("input", new ControlActors(gamepadService));
-            script.AddAction("update", new HandleCollisions());
+            script.AddAction("update", new HandleCollisions(audioService));
             script.AddAction("update", new HandleCooldowns());
             script.AddAction("update", new MoveActors());
+            script.AddAction("update", new PlayMusic(audioService));
             script.AddAction("output", new DrawActors(videoService));
-            script.AddAction("output", new PlaySound(audioService, testSound));
             // start the game
             Director director = new Director(videoService);
             director.StartGame(cast, script);

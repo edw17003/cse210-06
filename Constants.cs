@@ -5,6 +5,7 @@ namespace Unit06.Game
     /// Constants used throughout the project
     public class Constants
     {
+        public static string backgroundPath = "Game/Assets/Sprites/background_test.png";
         public static int COLUMNS = 40;
         public static int ROWS = 20;
         public static int CELL_SIZE = 15;
@@ -20,7 +21,6 @@ namespace Unit06.Game
         public static Color WHITE = new Color(255, 255, 255);
         public static Color YELLOW = new Color(255, 255, 0);
         public static Color GREEN = new Color(0, 255, 0);
-
     }
 }
 

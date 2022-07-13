@@ -170,5 +170,9 @@ namespace Unit06.Game.Casting
         {
             this.size = new Point(x, y);
         }
+        public Point GetSize()
+        {
+            return this.size;
+        }
     }
 }

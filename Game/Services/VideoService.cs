@@ -156,6 +156,15 @@ namespace Unit06.Game.Services
             int height = 10;
             Raylib.DrawRectangle(posX, posY, width, height, Raylib_cs.Color.RED);
         }
+
+        public void DrawHitbox(Actor actor)
+        {
+            int posX = actor.GetPosition().GetX();
+            int posY = actor.GetPosition().GetY();
+            int width = actor.GetSize().GetX();
+            int height = actor.GetSize().GetY();
+            Raylib.DrawRectangleLines(posX, posY, width, height, Raylib_cs.Color.BLACK);
+        }
         public void DrawBackground()
         {
             string filename = Constants.backgroundPath;

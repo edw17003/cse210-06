@@ -163,17 +163,17 @@ namespace Unit06.Game.Scripting
         {
             Player player1 = (Player)cast.GetActors("players")[0];
             Player player2 = (Player)cast.GetActors("players")[1];
-            Sword sword1 = (Sword) cast.GetActors("swords")[0];
-            Sword sword2 = (Sword) cast.GetActors("swords")[1];
+            Sword sword1 = (Sword)cast.GetActors("swords")[0];
+            Sword sword2 = (Sword)cast.GetActors("swords")[1];
 
-            if (player1.Overlaps(sword2) && player2.GetCooldown() == 0)
+            if (sword2.Overlaps(player1) && player2.GetCooldown() == 0)
                 {
                       player1.SetHealth(25);
                       player1.StartCooldown();
                       Console.WriteLine("Sword2 Colliding with Player1");
                       sword2.SetIsThrown(false);           
                 }
-            if (player2.Overlaps(sword1) && player2.GetCooldown() == 0)
+            if (sword1.Overlaps(player2) && player2.GetCooldown() == 0)
                 {
                       player2.SetHealth(25);
                       player2.StartCooldown();

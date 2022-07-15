@@ -16,7 +16,7 @@ namespace Unit06.Game.Casting
         {
             
             SetSprite(sprite);
-            SetSize(neutralSize[0], neutralSize[1]);
+            //SetSize(neutralSize[0], neutralSize[1]);
             
         }
 
@@ -30,7 +30,31 @@ namespace Unit06.Game.Casting
             return this.neutralSize;
         }
 
-        
+        public override bool Overlaps(Actor other)
+        {
+            float x0;
+            float x1;
+            float y0;
+            float y1;
+            if (this.GetLeft() > this.GetRight())
+            {
+                x0 = this.GetRight();
+                x1 = this.GetLeft();
+            } else {
+                x1 = this.GetRight();
+                x0 = this.GetLeft();
+            }
+            if (this.GetTop() < this.GetBottom())
+            {
+                y0 = this.GetBottom();
+                y1 = this.GetTop();
+            } else {
+                y1 = this.GetBottom();
+                y0 = this.GetTop();
+            }
+            return (x0 < other.GetRight() && x1 > other.GetLeft()
+                 && y1 < other.GetBottom() && y0 > other.GetTop());
+        }
 
         public void SetIsThrown(bool thrown)
         {

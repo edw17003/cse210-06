@@ -68,7 +68,7 @@ namespace Unit06.Game.Casting
             return position.GetY() + size.GetY();
         }
 
-        public bool Overlaps(Actor other)
+        public virtual bool Overlaps(Actor other)
         {
             return (this.GetLeft() < other.GetRight() && this.GetRight() > other.GetLeft()
                  && this.GetTop() < other.GetBottom() && this.GetBottom() > other.GetTop());

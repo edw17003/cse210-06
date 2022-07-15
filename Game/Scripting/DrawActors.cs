@@ -35,7 +35,8 @@ namespace Unit06.Game.Scripting
             
             videoService.DrawImage(swords[0].GetSprite(), swords[0].GetPosition());
             videoService.DrawImage(swords[1].GetSprite(), swords[1].GetPosition());
-            
+            // videoService.DrawHitbox(swords[0]);
+            // videoService.DrawHitbox(swords[1]);
             
             videoService.DrawActors(messages);
             videoService.DrawWalls(walls);

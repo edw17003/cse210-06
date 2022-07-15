@@ -4,7 +4,6 @@ namespace Unit06.Game.Casting
     /// <para>The bike continually leaves a trail behind it..</para>
     public class Player : Actor
     {
-        private Point spawn = new Point(0, 0);
         private int cooldown = 0;
         private int cdStart = 120;
         private int angle = 0;

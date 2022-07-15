@@ -28,8 +28,13 @@ namespace Unit06.Game.Scripting
                 player.SetAngle(GetAngle(index));
                 Sword sword = (Sword)cast.GetActors("swords")[index];
                 PositionSword(sword, player);
+                // if (sword.GetIsThrown())
+                // {
+                //     Console.WriteLine($"{sword.GetPosition().GetX()}, {sword.GetPosition().GetY()}");   
+                // }
+                
                 ThrowSword(sword, index);
-                //sword.SetSize((int)(Math.Cos(GetAngle(index)) * sword.GetNeutralSize()[0] + Math.Sin(GetAngle(index)) * sword.GetNeutralSize()[1]), (int)(Math.Sin(GetAngle(index)) * sword.GetNeutralSize()[0] + Math.Cos(GetAngle(index)) * sword.GetNeutralSize()[1]));
+                sword.SetSize((int)(Math.Cos(GetAngle(index) * Math.PI / 180) * sword.GetNeutralSize()[0] + Math.Sin(GetAngle(index) * Math.PI / 180) * sword.GetNeutralSize()[1]), (int)(Math.Sin(GetAngle(index) * Math.PI / 180) * sword.GetNeutralSize()[0] + Math.Cos(GetAngle(index) * Math.PI / 180) * sword.GetNeutralSize()[1]));
                 
                 //Console.WriteLine($"{sword.GetSize().GetX()}, {sword.GetSize().GetY()}");
                 index++;

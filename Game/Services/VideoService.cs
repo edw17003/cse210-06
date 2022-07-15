@@ -176,6 +176,8 @@ namespace Unit06.Game.Services
             Raylib_cs.Texture2D texture = textures[filename];
             Raylib.DrawTexture(texture, 0, 0, Raylib_cs.Color.WHITE);
         }
+
+        // Draws text to the screen using the specified parameters
         public void DrawText(string text, int xValue, int yValue, int fontSize, Casting.Color color) 
         {
             string message = text;
@@ -186,6 +188,8 @@ namespace Unit06.Game.Services
             Raylib_cs.Color raylibColor = ToRaylibColor(c);
             Raylib.DrawText(message, x, y, f, raylibColor);
         }
+
+        // Gets the width of the given message and font size
         public int MeasureText(string text, int fontSize) 
         {
             string message = text;

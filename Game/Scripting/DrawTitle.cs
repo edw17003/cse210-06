@@ -28,8 +28,8 @@ namespace Unit06.Game.Scripting
             bool startGame = gamepadService.IsButtonDown(0, "rmiddle");
             if (startGame)
             {
-                script.AddAction("input", new ControlActors(gamepadService));
-                script.AddAction("update", new HandleCollisions(audioService));
+                script.AddAction("input", new ControlActors(gamepadService, audioService));
+                script.AddAction("update", new HandleCollisions());
                 script.AddAction("update", new HandleCooldowns());
                 script.AddAction("update", new MoveActors());
                 script.AddAction("update", new PlayMusic(audioService));

@@ -1,6 +1,4 @@
 using Unit06.Game.Casting;
-using Unit06.Game.Services;
-
 
 namespace Unit06.Game.Scripting
 {
@@ -8,15 +6,12 @@ namespace Unit06.Game.Scripting
     public class HandleCollisions : Action
     {
         private bool isGameOver = false;
-        private AudioService audioService;
-        private Sound laserSound = new Sound(Constants.laserSound);
 
         /// <summary>
         /// Constructs a new instance of HandleCollisionsAction.
         /// </summary>
-        public HandleCollisions(AudioService audioService)
+        public HandleCollisions()
         {
-            this.audioService = audioService;
         }
 
         /// <inheritdoc/>
@@ -69,10 +64,6 @@ namespace Unit06.Game.Scripting
                     if (yVelocity < 0)
                     {
                         yVelocity = 0;
-                        if (!audioService.IsSoundPlaying(laserSound))
-                        {
-                            audioService.PlaySound(laserSound);
-                        }
                     }
                     player.SetVelocity(new Point(player.GetVelocity().GetX(), yVelocity));
                 }

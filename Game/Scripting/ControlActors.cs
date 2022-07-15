@@ -8,14 +8,16 @@ namespace Unit06.Game.Scripting
     /// The responsibility of ControlActorsAction is to get the direction and move the snake's head.
     public class ControlActors : Action
     {
-        private VideoService videoService;
         private GamepadService gamepadService;
         private AudioService audioService;
+        private Sound throwSound = new Sound(Constants.throwSound);
+
 
         /// Constructs a new instance of ControlActorsAction using the given KeyboardService.
-        public ControlActors(GamepadService gamepadService)
+        public ControlActors(GamepadService gamepadService, AudioService audioService)
         {
             this.gamepadService = gamepadService;
+            this.audioService = audioService;
         }
 
         /// 
@@ -63,6 +65,7 @@ namespace Unit06.Game.Scripting
         {
             if (gamepadService.IsButtonDown(index, "rt") && sword.GetIsThrown() == false && sword.GetCooldown() == 0)
             {
+                audioService.PlaySound(throwSound);
                 sword.SetIsThrown(true);
                 sword.SetVelocity(new Point((int)(gamepadService.GetRightVector(index).X*10), (int)(gamepadService.GetRightVector(0).Y * 10)));
             }

@@ -48,22 +48,22 @@ namespace Unit06.Game.Casting
             return velocity;
         }
 
-        public virtual float GetLeft()
+        public float GetLeft()
         {
             return position.GetX();
         }
 
-        public virtual float GetRight()
+        public float GetRight()
         {
             return position.GetX() + size.GetX();
         }
 
-        public virtual float GetTop()
+        public float GetTop()
         {
             return position.GetY();
         }
 
-        public virtual float GetBottom()
+        public float GetBottom()
         {
             return position.GetY() + size.GetY();
         }

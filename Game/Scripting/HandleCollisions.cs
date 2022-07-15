@@ -28,6 +28,7 @@ namespace Unit06.Game.Scripting
                 HandlePlayerCollisions(cast);
                 HandleWallCollisions(cast);
                 HandleSwordWallCollisions(cast);
+                HandlePlayerSwordCollisions(cast);
             }
         }
 
@@ -41,7 +42,7 @@ namespace Unit06.Game.Scripting
                 { 
                     if (sword.Overlaps(wall)) 
                     {
-                        Console.WriteLine("sword colliding with wall");
+                        
                         sword.SetIsThrown(false);
                     }
                 }
@@ -127,6 +128,7 @@ namespace Unit06.Game.Scripting
                             yVelocity = 0;
                         }
                         player.SetVelocity(new Point(player.GetVelocity().GetX(), yVelocity));
+                        //Console.WriteLine("Player is colliding.");
                     }
                     if (player.OverlapsBottom(wall))
                     {
@@ -135,7 +137,8 @@ namespace Unit06.Game.Scripting
                         {
                             yVelocity = 0;
                         }
-                        player.SetVelocity(new Point(player.GetVelocity().GetX(), yVelocity));   
+                        player.SetVelocity(new Point(player.GetVelocity().GetX(), yVelocity)); 
+                        //Console.WriteLine("Player is colliding.");  
                     }
                     if (player.OverlapsLeft(wall))
                     {
@@ -145,6 +148,7 @@ namespace Unit06.Game.Scripting
                             xVelocity = 0;
                         }
                         player.SetVelocity(new Point(xVelocity, player.GetVelocity().GetY()));  
+                        //Console.WriteLine("Player is colliding.");
                     }
                     if (player.OverlapsRight(wall))
                     {
@@ -154,6 +158,7 @@ namespace Unit06.Game.Scripting
                             xVelocity = 0;
                         }
                         player.SetVelocity(new Point(xVelocity, player.GetVelocity().GetY())); 
+                        //Console.WriteLine("Player is colliding.");
                     } 
                 }
             } 
@@ -170,14 +175,14 @@ namespace Unit06.Game.Scripting
                 {
                       player1.SetHealth(25);
                       player1.StartCooldown();
-                      Console.WriteLine("Sword2 Colliding with Player1");
+                      //Console.WriteLine("Sword2 Colliding with Player1");
                       sword2.SetIsThrown(false);           
                 }
             if (sword1.Overlaps(player2) && player2.GetCooldown() == 0)
                 {
                       player2.SetHealth(25);
                       player2.StartCooldown();
-                      Console.WriteLine("Sword1 Colliding with Player2");
+                      //Console.WriteLine("Sword1 Colliding with Player2");
                       sword1.SetIsThrown(false);
                 }
         }

@@ -23,8 +23,8 @@ namespace Unit06.Game.Scripting
         /// 
         public void Execute(Cast cast, Script script)
         {
-            int messageWidth = videoService.MeasureText(Constants.STARTMESSAGE, 40);
-            
+            int messageWidth = videoService.MeasureText(Constants.STARTMESSAGE, Constants.STARTMESSAGESIZE);
+
             bool startGame = gamepadService.IsButtonDown(0, "rmiddle");
             if (startGame)
             {
@@ -59,7 +59,8 @@ namespace Unit06.Game.Scripting
                 script.RemoveAction("output", script.GetActions("output")[0]);
             }
             videoService.ClearBuffer();
-            videoService.DrawText(Constants.STARTMESSAGE, (Constants.MAX_X / 2) - (messageWidth / 2), Constants.MAX_Y / 2, 40, Constants.BLACK);
+            videoService.DrawText(Constants.STARTMESSAGE, (Constants.MAX_X / 2) - (messageWidth / 2), 
+            Constants.MAX_Y / 2, Constants.STARTMESSAGESIZE, Constants.BLACK);
             videoService.FlushBuffer();
         }
     }

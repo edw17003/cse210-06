@@ -5,8 +5,10 @@ namespace Unit06.Game
     /// Constants used throughout the project
     public class Constants
     {
-        public static string laserSound = "Game/Assets/Sounds\\laser.wav";
-        public static string wallsTextFile = "Game/Assets/MapData/walls.txt";
+        public static string player1Sprite = "Game/Assets/Sprites/player1.png";
+        public static string player2Sprite = "Game/Assets/Sprites/player2.png";
+        public static string throwSound = "Game/Assets/Sounds\\laser.wav";
+        public static string mapFile = "Game/Assets/MapData/map.txt";
         public static string backgroundPath = "Game/Assets/Sprites/background.png";
         public static int COLUMNS = 40;
         public static int ROWS = 20;
@@ -18,6 +20,7 @@ namespace Unit06.Game
         public static int FONT_SIZE = 15;
         public static string CAPTION = "Fight!";
         public static string STARTMESSAGE = "Press the start button to begin";
+        public static int STARTMESSAGESIZE = 40;
 
         public static Color RED = new Color(255, 0, 0);
         public static Color WHITE = new Color(255, 255, 255);

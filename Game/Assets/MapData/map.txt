@@ -1,4 +1,6 @@
-posX,posY,width,height
+X,Y,width,height
+50,450
+1450,450
 0,0,1600,20
 0,0,20,900
 0,880,1600,20

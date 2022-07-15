@@ -5,6 +5,7 @@ namespace Unit06.Game
     /// Constants used throughout the project
     public class Constants
     {
+        public static string wallsTextFile = "Game/Assets/MapData/walls.txt";
         public static string backgroundPath = "Game/Assets/Sprites/background.png";
         public static int COLUMNS = 40;
         public static int ROWS = 20;

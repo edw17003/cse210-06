@@ -67,12 +67,8 @@ namespace Unit06
             // create the script
 
             Script script = new Script();
-            script.AddAction("input", new ControlActors(gamepadService));
-            script.AddAction("update", new HandleCollisions(audioService));
-            script.AddAction("update", new HandleCooldowns());
-            script.AddAction("update", new MoveActors());
-            script.AddAction("update", new PlayMusic(audioService));
-            script.AddAction("output", new DrawActors(videoService));
+            script.AddAction("output", new DrawTitle(videoService, gamepadService, audioService));
+            
             // start the game
             Director director = new Director(videoService);
             director.StartGame(cast, script);

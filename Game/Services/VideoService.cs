@@ -167,5 +167,22 @@ namespace Unit06.Game.Services
             Raylib_cs.Texture2D texture = textures[filename];
             Raylib.DrawTexture(texture, 0, 0, Raylib_cs.Color.WHITE);
         }
+        public void DrawText(string text, int xValue, int yValue, int fontSize, Casting.Color color) 
+        {
+            string message = text;
+            int x = xValue;
+            int y = yValue;
+            int f = fontSize;
+            Casting.Color c = color;
+            Raylib_cs.Color raylibColor = ToRaylibColor(c);
+            Raylib.DrawText(message, x, y, f, raylibColor);
+        }
+        public int MeasureText(string text, int fontSize) 
+        {
+            string message = text;
+            int f = fontSize;
+            int fontWidth = Raylib.MeasureText(message, f);
+            return fontWidth;
+        }
     }
 }

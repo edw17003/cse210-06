@@ -15,12 +15,13 @@ namespace Unit06.Game
         public static int FRAME_RATE = 240;
         public static int FONT_SIZE = 15;
         public static string CAPTION = "Fight!";
-        public static int SNAKE_LENGTH = 8;
+        public static string STARTMESSAGE = "Press the start button to begin";
 
         public static Color RED = new Color(255, 0, 0);
         public static Color WHITE = new Color(255, 255, 255);
         public static Color YELLOW = new Color(255, 255, 0);
         public static Color GREEN = new Color(0, 255, 0);
+        public static Color BLACK = new Color(0, 0, 0);
     }
 }
 

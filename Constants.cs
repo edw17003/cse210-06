@@ -18,6 +18,7 @@ namespace Unit06.Game
         public static int FONT_SIZE = 15;
         public static string CAPTION = "Fight!";
         public static string STARTMESSAGE = "Press the start button to begin";
+        public static int STARTMESSAGESIZE = 40;
 
         public static Color RED = new Color(255, 0, 0);
         public static Color WHITE = new Color(255, 255, 255);

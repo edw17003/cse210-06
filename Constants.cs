@@ -7,6 +7,8 @@ namespace Unit06.Game
     {
         public static string laserSound = "Game/Assets/Sounds\\laser.wav";
         public static string wallsTextFile = "Game/Assets/MapData/walls.txt";
+        public static string map2 = "Game/Assets/MapData/testmap2.txt";
+        public static string map3 = "Game/Assets/MapData/testmap3.txt";
         public static string backgroundPath = "Game/Assets/Sprites/background.png";
         public static int COLUMNS = 40;
         public static int ROWS = 20;

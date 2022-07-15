@@ -23,8 +23,8 @@ namespace Unit06
             Cast cast = new Cast();
             Sprite p1 = new Sprite("Game/Assets/Sprites/player1.png", 1, 0);
             Sprite p2 = new Sprite("Game/Assets/Sprites/player2.png", 1, 0);
-            Point spawn1 = new Point(Constants.MAX_X / 3, Constants.MAX_Y / 2);
-            Point spawn2 = new Point(Constants.MAX_X / 3 * 2, Constants.MAX_Y / 2);
+            Point spawn1 = new Point(60, 450);
+            Point spawn2 = new Point(1450, 450);
             cast.AddActor("players", new Player(p1, spawn1));
             cast.AddActor("players", new Player(p2, spawn2));
             cast.AddActor("swords", new Sword());
@@ -51,7 +51,7 @@ namespace Unit06
 
             // create the script to be run each frame
             Script script = new Script();
-            script.AddAction("output", new DrawTitle(videoService, gamepadService, audioService));
+            script.AddAction("output", new DrawTitle(videoService, gamepadService, audioService, Constants.STARTMESSAGE));
 
             // start the game
             Director director = new Director(videoService);

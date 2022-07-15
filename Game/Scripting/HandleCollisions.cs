@@ -9,7 +9,7 @@ namespace Unit06.Game.Scripting
     {
         private bool isGameOver = false;
         private AudioService audioService;
-        private Sound laserSound = new Sound("Game/Assets/Sounds\\laser.wav");
+        private Sound laserSound = new Sound(Constants.laserSound);
 
         /// <summary>
         /// Constructs a new instance of HandleCollisionsAction.

@@ -70,6 +70,11 @@ namespace Unit06.Game.Casting
                 actors[group].Remove(actor);
             }
         }
+        /// Removes all actors.
+        public void RemoveAllActors()
+        {
+            this.actors = new Dictionary<string, List<Actor>>();
+        }
 
     }
 }

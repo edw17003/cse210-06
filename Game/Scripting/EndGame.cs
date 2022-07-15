@@ -35,7 +35,7 @@ namespace Unit06.Game.Scripting
                     script.RemoveAction("update", script.GetActions("update")[0]);
                     script.RemoveAction("output", script.GetActions("output")[0]);
                     script.RemoveAction("endgame", script.GetActions("endgame")[0]);
-                    script.AddAction("output", new DrawTitle(videoService, gamepadService, audioService));
+                    script.AddAction("output", new DrawTitle(videoService, gamepadService, audioService, "Game Over. Press Start to Play Again."));
                     cast.RemoveAllActors();
                     break;
                 }

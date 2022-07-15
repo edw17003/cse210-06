@@ -5,17 +5,14 @@ namespace Unit06.Game
     /// Constants used throughout the project
     public class Constants
     {
-<<<<<<< HEAD
         public static string laserSound = "Game/Assets/Sounds\\laser.wav";
         public static string wallsTextFile = "Game/Assets/MapData/walls.txt";
         public static string map2 = "Game/Assets/MapData/testmap2.txt";
         public static string map3 = "Game/Assets/MapData/testmap3.txt";
-=======
         public static string player1Sprite = "Game/Assets/Sprites/player1.png";
         public static string player2Sprite = "Game/Assets/Sprites/player2.png";
         public static string throwSound = "Game/Assets/Sounds\\laser.wav";
         public static string mapFile = "Game/Assets/MapData/map.txt";
->>>>>>> e5346c9759e2b22c15ceb1c74b6fa441274278f6
         public static string backgroundPath = "Game/Assets/Sprites/background.png";
         public static int COLUMNS = 40;
         public static int ROWS = 20;

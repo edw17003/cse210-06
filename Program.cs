@@ -21,15 +21,7 @@ namespace Unit06
 
             // create the cast
             Cast cast = new Cast();
-            Sprite p1 = new Sprite("Game/Assets/Sprites/player1.png", 1, 0);
-            Sprite p2 = new Sprite("Game/Assets/Sprites/player2.png", 1, 0);
-            Point spawn1 = new Point(60, 450);
-            Point spawn2 = new Point(1450, 450);
-            cast.AddActor("players", new Player(p1, spawn1));
-            cast.AddActor("players", new Player(p2, spawn2));
-            cast.AddActor("swords", new Sword());
-            cast.AddActor("swords", new Sword());
-
+            
             // load walls from .txt file and add them to the cast
             string wallsTextFile = System.IO.File.ReadAllText(Constants.wallsTextFile);
             string[] fileRows = wallsTextFile.Split("\n");

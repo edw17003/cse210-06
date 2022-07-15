@@ -8,8 +8,9 @@ namespace Unit06.Game.Scripting
     /// The responsibility of ControlActorsAction is to get the direction and move the snake's head.
     public class ControlActors : Action
     {
+        private VideoService videoService;
         private GamepadService gamepadService;
-
+        private AudioService audioService;
 
         /// Constructs a new instance of ControlActorsAction using the given KeyboardService.
         public ControlActors(GamepadService gamepadService)
@@ -20,6 +21,8 @@ namespace Unit06.Game.Scripting
         /// 
         public void Execute(Cast cast, Script script)
         {
+            
+
             int index = 0;
             foreach( Player player in cast.GetActors("players"))
             {

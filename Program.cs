@@ -18,7 +18,7 @@ namespace Unit06
             GamepadService gamepadService = new GamepadService();
             VideoService videoService = new VideoService(false);
             AudioService audioService = new AudioService();
-            // videoService.LoadImages("Game/Assets/Sprites");
+
             // create the cast
             Cast cast = new Cast();
             Sprite p1 = new Sprite("Game/Assets/Sprites/player1.png", 1, 0);
@@ -30,53 +30,38 @@ namespace Unit06
             cast.AddActor("swords", new Sword());
             cast.AddActor("swords", new Sword());
 
+            // load walls from .txt file and add them to the cast
+            string wallsTextFile = System.IO.File.ReadAllText(Constants.wallsTextFile);
+            string[] fileRows = wallsTextFile.Split("\n");
+            for (int i=1; i<fileRows.Length-1; i++)
+            {
+                string[] oneRow = fileRows[i].Split(",");
+                int posX = int.Parse(oneRow[0]);
+                int posY = int.Parse(oneRow[1]);
+                int width = int.Parse(oneRow[2]);
+                int height = int.Parse(oneRow[3]);
+
+                cast.AddActor("walls", new Wall(posX, posY, width, height));
+            }
+
+            // initialize audio
             audioService.Initialize();
             audioService.LoadSounds("Game/Assets/Sounds");
             audioService.LoadMusic("Game/Assets/Music");
 
-            // Top Border (x, y, height, width) 1600 x 900
-            cast.AddActor("walls", new Wall(0, 0, 1600, 20));
-            // Left Border
-            cast.AddActor("walls", new Wall(0, 0, 20, 900));
-            // Bottom Border
-            cast.AddActor("walls", new Wall(0, 880, 1600, 20));
-            // Right Border
-            cast.AddActor("walls", new Wall(1580, 0, 20, 900));
-
-            // Left-vertical barrier
-            cast.AddActor("walls", new Wall(300, 175, 20, 550));
-            // Right-vertical barrier
-            cast.AddActor("walls", new Wall(1300, 175, 20, 550));
-            // Left-horizontal barrier
-            cast.AddActor("walls", new Wall(220, 725, 600, 20));
-            // Right-horizontal barrier
-            cast.AddActor("walls", new Wall(800, 175, 600, 20));
-
-            // Left-vertical nub
-            cast.AddActor("walls", new Wall(220, 250, 80, 20));
-            // right-vertical nub
-            cast.AddActor("walls", new Wall(1320, 625, 80, 20));
-            // Left-horizontal nub
-            cast.AddActor("walls", new Wall(740, 725, 20, 80));
-            // Right-horizontal nub
-            cast.AddActor("walls", new Wall(880, 115, 20, 80));
-            
-            //Sound sound = new Sound("laser.wav", 1, true);
-            
-            
-            // create the script
-
+            // create the script to be run each frame
             Script script = new Script();
+            script.AddAction("output", new DrawTitle(videoService, gamepadService, audioService));
             script.AddAction("input", new ControlActors(gamepadService));
             script.AddAction("update", new HandleCollisions(audioService));
             script.AddAction("update", new HandleCooldowns());
             script.AddAction("update", new MoveActors());
             script.AddAction("update", new PlayMusic(audioService));
             script.AddAction("output", new DrawActors(videoService));
+
             // start the game
             Director director = new Director(videoService);
             director.StartGame(cast, script);
-            
         }
     }
 }

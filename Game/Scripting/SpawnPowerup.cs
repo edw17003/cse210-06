@@ -11,7 +11,10 @@ namespace Unit06.Game.Scripting
     }
     public void Execute(Cast cast, Script script)
     {
-        powerup.SpawnPowerup(cast);
+        if (powerup.IsPowerupPresent(cast))
+        {
+            powerup.SpawnPowerup(cast);
+        }
     }
     }
 }

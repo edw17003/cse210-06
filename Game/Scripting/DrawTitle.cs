@@ -12,6 +12,7 @@ namespace Unit06.Game.Scripting
         private GamepadService gamepadService;
         private AudioService audioService;
         private string message;
+        double temp = 0;
         private int mapIndex = 0;
         private string[] mapArray = new string[3]{Constants.wallsTextFile, Constants.map2, Constants.map3};
 
@@ -27,7 +28,7 @@ namespace Unit06.Game.Scripting
         /// 
         public void Execute(Cast cast, Script script)
         {
-            int messageWidth = videoService.MeasureText(Constants.STARTMESSAGE, Constants.STARTMESSAGESIZE);
+            
 
             bool startGame = gamepadService.IsButtonDown(0, "rmiddle");
             if (startGame)
@@ -63,23 +64,40 @@ namespace Unit06.Game.Scripting
                 script.AddAction("endgame", new EndGame(videoService, gamepadService, audioService));
                 script.RemoveAction("output", script.GetActions("output")[0]);
             }
+            
             videoService.ClearBuffer();
-            if (gamepadService.IsButtonDown(0, "lfl"))
-            {
-                mapIndex--;
-            }
-            if (gamepadService.IsButtonDown(0, "lfr"))
-            {
-                //if (gamepadService.IsButtonUp(0, "lfr"))
-                mapIndex++;
-            }
 
+            string map = SetMap();
+            DisplayMenu(map);
+
+            videoService.FlushBuffer();
+        }
+
+        private void DisplayMenu(string map)
+        {
+            int messageWidth = videoService.MeasureText(Constants.STARTMESSAGE, Constants.STARTMESSAGESIZE);
+
+            // Draw start menu text to screen
+            videoService.DrawText("Arrow keys to switch maps", 20, 10, Constants.STARTMESSAGESIZE, Constants.BLACK);
+            videoService.DrawText($"<{map}>", 20, 60, Constants.STARTMESSAGESIZE, Constants.BLACK);
             videoService.DrawText(Constants.STARTMESSAGE, (Constants.MAX_X / 2) - (messageWidth / 2), 
             Constants.MAX_Y / 2, Constants.STARTMESSAGESIZE, Constants.BLACK);
+        }
 
-            videoService.DrawText("Arrow keys to switch maps", 20, 10, Constants.STARTMESSAGESIZE, Constants.BLACK);
-            videoService.DrawText($"<{mapIndex}>", 20, 60, Constants.STARTMESSAGESIZE, Constants.BLACK); //{mapSelection}
-            videoService.FlushBuffer();
+        private string SetMap()
+        {
+            // Get map selection based on d-pad
+            if (gamepadService.IsButtonDown(0, "lfl") && temp > 0)
+            {
+                this.temp -= 0.03;
+            }
+            if (gamepadService.IsButtonDown(0, "lfr") && temp < 2)
+            {
+                this.temp += 0.03;
+            }
+            mapIndex = Convert.ToInt32(temp);
+
+            return mapArray[mapIndex];
         }
     }
 }

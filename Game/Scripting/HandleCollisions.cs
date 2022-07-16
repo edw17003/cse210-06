@@ -45,19 +45,16 @@ namespace Unit06.Game.Scripting
         }
         private void HandlePlayerCollisions(Cast cast)
         {
-            Player player1 = (Player)cast.GetActors("players")[0];
-            Player player2 = (Player)cast.GetActors("players")[1];
-            List<Player> players = new List<Player>();
-            players.Add(player1);
-            players.Add(player2);
-
-            Player otherPlayer = player1;
-
-            foreach (Player player in players)
+            
+            int index = 0;
+            foreach (Player player in cast.GetActors("players"))
             {
-                if (player == (cast.GetActors("players")[0]))
+                Player otherPlayer;
+                if (index == 0)
                 {
-                    otherPlayer = player2;
+                    otherPlayer = (Player)cast.GetActors("players")[1];
+                } else {
+                    otherPlayer = (Player)cast.GetActors("players")[0];
                 }
                 if (player.OverlapsTop(otherPlayer))
                 {
@@ -95,6 +92,7 @@ namespace Unit06.Game.Scripting
                     }
                     player.SetVelocity(new Point(xVelocity, player.GetVelocity().GetY())); 
                 }
+                index++;
             }
         }
 
@@ -162,7 +160,7 @@ namespace Unit06.Game.Scripting
             Sword sword1 = (Sword)cast.GetActors("swords")[0];
             Sword sword2 = (Sword)cast.GetActors("swords")[1];
 
-            if (sword2.Overlaps(player1) && player2.GetCooldown() == 0)
+            if (sword2.Overlaps(player1) && player1.GetCooldown() == 0)
                 {
                       player1.SetHealth(25);
                       player1.StartCooldown();

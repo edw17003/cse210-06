@@ -86,6 +86,16 @@ namespace Unit06.Game.Services
                 Raylib.PlayMusicStream(raylibMusic);
             }
         }
+
+        public void StopMusic(Casting.Sound sound)
+        {
+            string filename = sound.GetFilename();
+            if (music.ContainsKey(filename))
+            {
+                Raylib_cs.Music raylibMusic = music[filename];
+                Raylib.StopMusicStream(raylibMusic);
+            }
+        }
         public void UpdateMusic(Casting.Sound sound)
         {
             string filename = sound.GetFilename();

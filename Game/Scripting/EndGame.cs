@@ -28,6 +28,7 @@ namespace Unit06.Game.Scripting
             {
                 if (player.GetHealth() <= 0)
                 {
+                    audioService.StopMusic(new Casting.Sound("Game/Assets/Music\\music.mp3"));
                     script.RemoveAction("input", script.GetActions("input")[0]);
                     script.RemoveAction("update", script.GetActions("update")[3]);
                     script.RemoveAction("update", script.GetActions("update")[2]);

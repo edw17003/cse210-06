@@ -83,12 +83,12 @@ namespace Unit06.Game.Scripting
 
         private void DisplayMenu(string map)
         {
-            int messageWidth = videoService.MeasureText(Constants.STARTMESSAGE, Constants.STARTMESSAGESIZE);
+            int messageWidth = videoService.MeasureText(message, Constants.STARTMESSAGESIZE);
 
             // Draw start menu text to screen
             videoService.DrawText("Arrow keys to switch maps", 20, 10, Constants.STARTMESSAGESIZE, Constants.BLACK);
             videoService.DrawText($"<{map}>", 20, 60, Constants.STARTMESSAGESIZE, Constants.BLACK);
-            videoService.DrawText(Constants.STARTMESSAGE, (Constants.MAX_X / 2) - (messageWidth / 2), 
+            videoService.DrawText(message, (Constants.MAX_X / 2) - (messageWidth / 2), 
             Constants.MAX_Y / 2, Constants.STARTMESSAGESIZE, Constants.BLACK);
         }
 

@@ -43,6 +43,11 @@ namespace Unit06.Game.Scripting
                 actions[group].Remove(action);
             }
         }
+
+        public void RemoveAllOfKey(string group)
+        {
+            actions[group].Clear();
+        }
         
     }
 }

@@ -29,11 +29,11 @@ namespace Unit06.Game.Scripting
                 if (player.GetHealth() <= 0)
                 {
                     audioService.StopMusic(new Casting.Sound("Game/Assets/Music\\music.mp3"));
-                    script.RemoveAction("input", script.GetActions("input")[0]);
-                    script.RemoveAction("update", script.GetActions("update")[3]);
-                    script.RemoveAction("update", script.GetActions("update")[2]);
-                    script.RemoveAction("update", script.GetActions("update")[1]);
-                    script.RemoveAction("update", script.GetActions("update")[0]);
+                    
+                    
+                    script.RemoveAllOfKey("update");
+                    script.RemoveAllOfKey("input");
+                    script.RemoveAllOfKey("sound");
                     script.RemoveAction("output", script.GetActions("output")[0]);
                     script.RemoveAction("endgame", script.GetActions("endgame")[0]);
                     script.AddAction("output", new DrawTitle(videoService, gamepadService, audioService, "Game Over. Press Start to Play Again."));

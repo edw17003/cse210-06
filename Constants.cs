@@ -6,7 +6,7 @@ namespace Unit06.Game
     public class Constants
     {
         public static string laserSound = "Game/Assets/Sounds\\laser.wav";
-        public static string wallsTextFile = "Game/Assets/MapData/walls.txt";
+        public static string wallsTextFile = "Game/Assets/MapData/map.txt";
         public static string map2 = "Game/Assets/MapData/testmap2.txt";
         public static string map3 = "Game/Assets/MapData/testmap3.txt";
         public static string player1Sprite = "Game/Assets/Sprites/player1.png";

@@ -41,9 +41,10 @@ namespace Unit06.Game.Scripting
                 cast.AddActor("swords", new Sword());
                 cast.AddActor("swords", new Sword());
                 // load walls from .txt file and add them to the cast
+                // load walls from .txt file and add them to the cast
                 string wallsTextFile = System.IO.File.ReadAllText(Constants.wallsTextFile);
                 string[] fileRows = wallsTextFile.Split("\n");
-                for (int i=1; i<fileRows.Length-1; i++)
+                for (int i=3; i<fileRows.Length-3; i++)
                 {
                     string[] oneRow = fileRows[i].Split(",");
                     int posX = int.Parse(oneRow[0]);
@@ -53,8 +54,8 @@ namespace Unit06.Game.Scripting
 
                     cast.AddActor("walls", new Wall(posX, posY, width, height));
                 }
-                script.AddAction("input", new ControlActors(gamepadService));
-                script.AddAction("update", new HandleCollisions(audioService));
+                script.AddAction("input", new ControlActors(gamepadService, audioService));
+                script.AddAction("update", new HandleCollisions());
                 script.AddAction("update", new HandleCooldowns());
                 script.AddAction("update", new MoveActors());
                 script.AddAction("update", new PlayMusic(audioService));

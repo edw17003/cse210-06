@@ -22,20 +22,6 @@ namespace Unit06
             // create the cast
             Cast cast = new Cast();
             
-            // load walls from .txt file and add them to the cast
-            string wallsTextFile = System.IO.File.ReadAllText(Constants.wallsTextFile);
-            string[] fileRows = wallsTextFile.Split("\n");
-            for (int i=1; i<fileRows.Length-1; i++)
-            {
-                string[] oneRow = fileRows[i].Split(",");
-                int posX = int.Parse(oneRow[0]);
-                int posY = int.Parse(oneRow[1]);
-                int width = int.Parse(oneRow[2]);
-                int height = int.Parse(oneRow[3]);
-
-                cast.AddActor("walls", new Wall(posX, posY, width, height));
-            }
-
             // initialize audio
             audioService.Initialize();
             audioService.LoadSounds("Game/Assets/Sounds");

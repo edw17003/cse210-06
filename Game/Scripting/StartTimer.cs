@@ -53,6 +53,7 @@ namespace Unit06.Game.Scripting
                 script.AddAction("update", new HandleCollisions());
                 script.AddAction("update", new HandleCooldowns());
                 script.AddAction("update", new MoveActors());
+                script.AddAction("update", new SpawnPowerup());
                 cast.RemoveActor("messages", actor);
                 script.RemoveAction("timer", script.GetActions("timer")[0]);
                 this.seconds = "";

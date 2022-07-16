@@ -31,6 +31,8 @@ namespace Unit06.Game.Scripting
         {
             List<Actor> players = cast.GetActors("players");
             List<Actor> powerups = cast.GetActors("powerups");
+            List<Actor> swords = cast.GetActors("swords");
+            int index = 0;
 
             foreach (Player player in players)
             {
@@ -38,9 +40,10 @@ namespace Unit06.Game.Scripting
                 {
                     if (player.Overlaps(powerup))
                     {
-                        powerup.ApplyEffect(cast, player);
+                        powerup.ApplyEffect(cast, player, (Sword)swords[index]);
                     }
                 }
+                index ++;
             }
         }
         private void HandleSwordWallCollisions(Cast cast)
@@ -178,14 +181,14 @@ namespace Unit06.Game.Scripting
 
             if (sword2.Overlaps(player1) && player1.GetCooldown() == 0)
                 {
-                      player1.DamagePlayer(25);
+                      player1.DamagePlayer(sword2.GetDamage());
                       player1.StartCooldown();
                       //Console.WriteLine("Sword2 Colliding with Player1");
                       sword2.SetIsThrown(false);           
                 }
             if (sword1.Overlaps(player2) && player2.GetCooldown() == 0)
                 {
-                      player2.DamagePlayer(25);
+                      player2.DamagePlayer(sword1.GetDamage());
                       player2.StartCooldown();
                       //Console.WriteLine("Sword1 Colliding with Player2");
                       sword1.SetIsThrown(false);

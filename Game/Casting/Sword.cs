@@ -9,6 +9,7 @@ namespace Unit06.Game.Casting
         private Sprite sprite = new Sprite("Game/Assets/Sprites/sword.png", 1, 180);
         private int cooldown = 0;
         private int cdStart = 120;
+        private int damage = 25;
         private int[] neutralSize = new int[] {64, 10};
         private bool thrown = false;
         
@@ -101,6 +102,14 @@ namespace Unit06.Game.Casting
             {
             // SetVelocity(new Point((int)(GetVelocity().GetX() - cdStart/(cooldown+1)), (int)(GetVelocity().GetY() - cdStart/(cooldown + 1))));
             }
+        }
+        public int GetDamage()
+        {
+            return this.damage;
+        }
+        public void SetDamage()
+        {
+            damage ++;
         }
     }
 }

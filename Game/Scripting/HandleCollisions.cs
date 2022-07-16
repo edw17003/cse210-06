@@ -178,14 +178,14 @@ namespace Unit06.Game.Scripting
 
             if (sword2.Overlaps(player1) && player1.GetCooldown() == 0)
                 {
-                      player1.SetHealth(25);
+                      player1.DamagePlayer(25);
                       player1.StartCooldown();
                       //Console.WriteLine("Sword2 Colliding with Player1");
                       sword2.SetIsThrown(false);           
                 }
             if (sword1.Overlaps(player2) && player2.GetCooldown() == 0)
                 {
-                      player2.SetHealth(25);
+                      player2.DamagePlayer(25);
                       player2.StartCooldown();
                       //Console.WriteLine("Sword1 Colliding with Player2");
                       sword1.SetIsThrown(false);

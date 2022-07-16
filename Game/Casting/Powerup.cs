@@ -32,7 +32,8 @@ namespace Unit06.Game.Casting
             switch (this.effect)
             {
                 case 1:
-                    Console.WriteLine("Applied effect 1");
+                    player.HealPlayer(25);
+                    Console.WriteLine("Healed player by 25");
                     break;
                 case 2:
                     Console.WriteLine("Applied effect 2");

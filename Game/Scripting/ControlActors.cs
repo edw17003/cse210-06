@@ -32,29 +32,44 @@ namespace Unit06.Game.Scripting
                 player.SetVelocity(direction);
                 player.SetAngle(GetAngle(index));
                 Sword sword = (Sword)cast.GetActors("swords")[index];
-                if (!sword.GetIsThrown())
-                {
-                    sword.SetPosition(SwordPosition(player.GetPosition()));
-                    sword.SetSpriteRotation(player.GetAngle());
-                }
+                SetSwordPos(sword, player);
                 // if (sword.GetIsThrown())
                 // {
                 //     Console.WriteLine($"{sword.GetPosition().GetX()}, {sword.GetPosition().GetY()}");   
                 // }
+                ThrowSword(sword, index);
                 
-                if (gamepadService.IsButtonDown(index, "rt") && sword.GetIsThrown() == false && sword.GetCooldown() == 0)
-                {
-                    audioService.PlaySound(throwSound);
-                    sword.SetIsThrown(true);
-                    sword.SetVelocity(new Point((int)(gamepadService.GetRightVector(index).X*10), (int)(gamepadService.GetRightVector(index).Y * 10)));
-                }
-                sword.SetSize((int)(Math.Cos(GetAngle(index) * Math.PI / 180) * sword.GetNeutralSize()[0] + Math.Sin(GetAngle(index) * Math.PI / 180) * sword.GetNeutralSize()[1]), (int)(Math.Sin(GetAngle(index) * Math.PI / 180) * sword.GetNeutralSize()[0] + Math.Cos(GetAngle(index) * Math.PI / 180) * sword.GetNeutralSize()[1]));
-                if (index == 1)
-                {
-                    Console.WriteLine($"{player.GetPosition().GetX()}, {player.GetPosition().GetY()}");
-                }
+                sword.SetSize((int)(Math.Cos(GetAngle(index) * Math.PI / 180) * 
+                                sword.GetNeutralSize()[0] + Math.Sin(GetAngle(index) * Math.PI / 180) * 
+                                sword.GetNeutralSize()[1]), 
+                              (int)(Math.Sin(GetAngle(index) * Math.PI / 180) * 
+                                sword.GetNeutralSize()[0] + Math.Cos(GetAngle(index) * Math.PI / 180) * 
+                                sword.GetNeutralSize()[1]));
+                // if (index == 1)
+                // {
+                //     Console.WriteLine($"{player.GetPosition().GetX()}, {player.GetPosition().GetY()}");
+                // }
                 //Console.WriteLine($"{sword.GetSize().GetX()}, {sword.GetSize().GetY()}");
                 index++;
+            }
+        }
+
+        private void ThrowSword(Sword sword, int index)
+        {
+            if (gamepadService.IsButtonDown(index, "rt") && sword.GetIsThrown() == false && sword.GetCooldown() == 0)
+            {
+                audioService.PlaySound(throwSound);
+                sword.SetIsThrown(true);
+                sword.SetVelocity(new Point((int)(gamepadService.GetRightVector(index).X*10), (int)(gamepadService.GetRightVector(index).Y * 10)));
+            }
+        }
+
+        private void SetSwordPos(Sword sword, Player player)
+        {
+            if (!sword.GetIsThrown())
+            {
+                sword.SetPosition(SwordPosition(player.GetPosition()));
+                sword.SetSpriteRotation(player.GetAngle());
             }
         }
 

@@ -7,8 +7,8 @@ namespace Unit06.Game
     {
         public static string laserSound = "Game/Assets/Sounds\\laser.wav";
         public static string wallsTextFile = "Game/Assets/MapData/map.txt";
-        public static string map2 = "Game/Assets/MapData/testmap2.txt";
-        public static string map3 = "Game/Assets/MapData/testmap3.txt";
+        public static string map2 = "Game/Assets/MapData/map2.txt";
+        public static string map3 = "Game/Assets/MapData/map3.txt";
         public static string player1Sprite = "Game/Assets/Sprites/player1.png";
         public static string player2Sprite = "Game/Assets/Sprites/player2.png";
         public static string throwSound = "Game/Assets/Sounds\\laser.wav";
@@ -23,7 +23,7 @@ namespace Unit06.Game
         public static int FRAME_RATE = 240;
         public static int FONT_SIZE = 15;
         public static string CAPTION = "Fight!";
-        public static string STARTMESSAGE = "Press the start button to begin";
+        public static string STARTMESSAGE = "Press the Start button to begin";
         public static int STARTMESSAGESIZE = 40;
 
         public static Color RED = new Color(255, 0, 0);

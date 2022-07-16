@@ -3,8 +3,8 @@ namespace Unit06.Game.Casting
     class Powerup : Actor
     {
         private int effect;
-        private int posX;
-        private int posY;
+        private int posX = 0;
+        private int posY = 0;
         Random random = new Random();
         public Powerup(int posX, int posY)
         {
@@ -44,14 +44,32 @@ namespace Unit06.Game.Casting
             Actor effect = cast.GetFirstOfKey("effect");
             cast.RemoveActor("powerup", effect);
         }
-        public void spawnEffect(Cast cast)
+        public void spawnPowerup(Cast cast)
         {
-            // WIP
-            int newX = random.Next(1,1590);
-            int newY = random.Next(1,890);
-            Powerup test = new Powerup(newX, newY);
-            
-            // List<Actor> walls = new List<Actor>(cast.GetAllActors("walls"));
+            List<Actor> walls = new List<Actor>(cast.GetActors("walls"));
+            bool cannotSpawn = true;
+            Powerup testPowerup = new Powerup(0,0);
+
+            while (cannotSpawn)
+            {
+                int newX = random.Next(1, Constants.MAX_X - 10);
+                int newY = random.Next(1, Constants.MAX_Y - 10);
+                testPowerup = new Powerup(newX, newY);
+
+                foreach (Wall wall in walls)
+                {
+                    if (!testPowerup.Overlaps(wall))
+                    {
+                        cannotSpawn = false;
+                    }
+                }
+            }
+            cast.AddActor("powerup", testPowerup);
+        }
+        public bool IsPowerupPresent(Cast cast)
+        {
+            List<Actor> powerups = new List<Actor>(cast.GetActors("powerup"));
+            return powerups.Count != 0;
         }
     }
 }

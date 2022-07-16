@@ -24,9 +24,25 @@ namespace Unit06.Game.Scripting
                 HandleWallCollisions(cast);
                 HandleSwordWallCollisions(cast);
                 HandlePlayerSwordCollisions(cast);
+                HandlePowerupCollisions(cast);
             }
         }
+        private void HandlePowerupCollisions(Cast cast)
+        {
+            List<Actor> players = cast.GetActors("players");
+            List<Actor> powerups = cast.GetActors("powerups");
 
+            foreach (Player player in players)
+            {
+                foreach (Powerup powerup in powerups)
+                {
+                    if (player.Overlaps(powerup))
+                    {
+                        powerup.ApplyEffect(cast, player);
+                    }
+                }
+            }
+        }
         private void HandleSwordWallCollisions(Cast cast)
         {
             List<Actor> swords = cast.GetActors("swords");

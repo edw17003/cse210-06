@@ -10,7 +10,7 @@ namespace Unit06.Game.Casting
         {
             this.posX = posX;
             this.posY = posY;
-            effect = random.Next(1,4);
+            effect = 1;
             this.SetSize(32,32);
             this.SetPosition(new Point(this.posX, this.posY));
             this.SetSprite(new Sprite("Game/Assets/Sprites/powerup.png", 1, 0));
@@ -44,8 +44,7 @@ namespace Unit06.Game.Casting
                     Console.WriteLine("Applied effect 4");
                     break;
             }
-            Actor powerup = cast.GetFirstOfKey("powerup");
-            cast.RemoveActor("powerup", powerup);
+            cast.RemoveActor("powerups", this);
         }
         public void SpawnPowerup(Cast cast)
         {

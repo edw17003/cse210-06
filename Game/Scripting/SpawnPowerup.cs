@@ -11,7 +11,11 @@ namespace Unit06.Game.Scripting
     }
     public void Execute(Cast cast, Script script)
     {
-        powerup.SpawnPowerup(cast);
+        List<Actor> powerups = new List<Actor>(cast.GetActors("powerups"));
+        if (powerups.Count == 0)
+        {
+            powerup.SpawnPowerup(cast);
+        }
     }
     }
 }

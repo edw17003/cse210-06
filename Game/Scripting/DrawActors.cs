@@ -42,8 +42,9 @@ namespace Unit06.Game.Scripting
             // videoService.DrawHitbox(swords[0]);
             // videoService.DrawHitbox(swords[1]);
             
-            videoService.DrawActors(messages);
+            
             videoService.DrawWalls(walls);
+            videoService.DrawActors(messages);
             videoService.DrawHealth(player1);
             videoService.DrawHealth(player2);
             videoService.FlushBuffer();

@@ -52,9 +52,17 @@ namespace Unit06.Game.Casting
             return this.health;
         }
 
-        public void SetHealth(int damage)
+        public void DamagePlayer(int damage)
         {
             this.health -= damage;
+        }
+        public void HealPlayer(int healing)
+        {
+            this.health += healing;
+            if (this.health > 100 + Constants.max_overheal)
+            {
+                this.health = 100 + Constants.max_overheal;
+            }
         }
     }
 }

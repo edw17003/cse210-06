@@ -13,7 +13,7 @@ namespace Unit06.Game.Scripting
         double mapTemp = 0;
         private int mapIndex = 0;
         private string[] mapArray = new string[3]{Constants.wallsTextFile, Constants.map2, Constants.map3};
-        int timerTemp = 0;
+        
 
         /// Constructs a new instance of DrawTitle
         public DrawTitle(VideoService videoService, GamepadService gamepadService, AudioService audioService, string message)

@@ -10,7 +10,7 @@ namespace Unit06.Game.Casting
         {
             this.posX = posX;
             this.posY = posY;
-            effect = random.Next(1,4);
+            effect = random.Next(1,3);
             this.SetSize(32,32);
             this.SetPosition(new Point(this.posX, this.posY));
             this.SetSprite(new Sprite("Game/Assets/Sprites/powerup.png", 1, 0));
@@ -27,25 +27,18 @@ namespace Unit06.Game.Casting
         {
             return posY;
         }
-        public void ApplyEffect(Cast cast, Player player)
+        public void ApplyEffect(Cast cast, Player player, Sword sword)
         {
             switch (this.effect)
             {
                 case 1:
-                    Console.WriteLine("Applied effect 1");
+                    player.HealPlayer(25);
                     break;
                 case 2:
-                    Console.WriteLine("Applied effect 2");
-                    break;
-                case 3:
-                    Console.WriteLine("Applied effect 3");
-                    break;
-                case 4:
-                    Console.WriteLine("Applied effect 4");
+                    sword.SetDamage();
                     break;
             }
-            Actor powerup = cast.GetFirstOfKey("powerup");
-            cast.RemoveActor("powerup", powerup);
+            cast.RemoveActor("powerups", this);
         }
         public void SpawnPowerup(Cast cast)
         {

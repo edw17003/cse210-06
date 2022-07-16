@@ -70,10 +70,5 @@ namespace Unit06.Game.Casting
                 }
             }
         }
-        public bool IsPowerupPresent(Cast cast)
-        {
-            List<Actor> powerups = new List<Actor>(cast.GetActors("powerup"));
-            return powerups.Count != 0;
-        }
     }
 }

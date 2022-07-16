@@ -51,7 +51,7 @@ namespace Unit06.Game.Casting
             int newY = random.Next(1,890);
             Powerup test = new Powerup(newX, newY);
             
-            List<Actor> walls = new List<Actor>(cast.GetAllActors("walls"));
+            // List<Actor> walls = new List<Actor>(cast.GetAllActors("walls"));
         }
     }
 }

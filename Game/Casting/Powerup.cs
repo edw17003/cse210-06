@@ -3,8 +3,8 @@ namespace Unit06.Game.Casting
     class Powerup : Actor
     {
         private int effect;
-        private int posX;
-        private int posY;
+        private int posX = 0;
+        private int posY = 0;
         Random random = new Random();
         public Powerup(int posX, int posY)
         {

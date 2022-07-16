@@ -1,7 +1,5 @@
 using Unit06.Game.Casting;
 using Unit06.Game.Services;
-using Raylib_cs;
-
 
 namespace Unit06.Game.Scripting
 {
@@ -57,7 +55,7 @@ namespace Unit06.Game.Scripting
                 cast.AddActor("swords", new Sword());
                 
                 // load walls from selected .txt file and add them to the cast
-                for (int i=3; i<fileRows.Length-3; i++)
+                for (int i=3; i<fileRows.Length; i++)
                 {
                     string[] oneRow = fileRows[i].Split(",");
                     int posX = int.Parse(oneRow[0]);

@@ -5,18 +5,19 @@ using Raylib_cs;
 
 namespace Unit06.Game.Scripting
 {
-    /// The responsibility of DrawTitleAction is to draw each of the actors.</para>
+    /// The responsibility of DrawTitle is to draw each of the actors at all stages of the game
     public class DrawTitle : Action
     {
         private VideoService videoService;
         private GamepadService gamepadService;
         private AudioService audioService;
         private string message;
-        double temp = 0;
+        double mapTemp = 0;
         private int mapIndex = 0;
         private string[] mapArray = new string[3]{Constants.wallsTextFile, Constants.map2, Constants.map3};
+        int timerTemp = 0;
 
-        /// Constructs a new instance of ControlActorsAction using the given KeyboardService.
+        /// Constructs a new instance of DrawTitle
         public DrawTitle(VideoService videoService, GamepadService gamepadService, AudioService audioService, string message)
         {
             this.videoService = videoService;
@@ -25,19 +26,23 @@ namespace Unit06.Game.Scripting
             this.message = message;
         }
 
-        /// 
+        // Runs the game script
         public void Execute(Cast cast, Script script)
         {
+            // Start Menu
             videoService.ClearBuffer();
-
             string map = SetMap();
             DisplayMenu(map);
-
             videoService.FlushBuffer();
 
+            
+
+            // Start Game
             bool startGame = gamepadService.IsButtonDown(0, "rmiddle");
             if (startGame)
             {
+                // Cooldown
+                
                 string wallsTextFile = System.IO.File.ReadAllText(map);
                 string[] fileRows = wallsTextFile.Split("\n");
                 string[] s1 = fileRows[1].Split(",");
@@ -62,14 +67,19 @@ namespace Unit06.Game.Scripting
 
                     cast.AddActor("walls", new Wall(posX, posY, width, height));
                 }
-                script.AddAction("input", new ControlActors(gamepadService, audioService));
-                script.AddAction("update", new HandleCollisions());
-                script.AddAction("update", new HandleCooldowns());
-                script.AddAction("update", new MoveActors());
-                script.AddAction("update", new PlayMusic(audioService));
+                Actor actor = new Actor();
+                actor.SetPosition(new Point( Constants.MAX_X / 2, Constants.MAX_Y / 2));
+                actor.SetFontSize(Constants.TIMERSIZE);
+                actor.SetColor(Constants.WHITE);
+                cast.AddActor("messages", actor);
+                script.AddAction("timer", new StartTimer(videoService, gamepadService, audioService));
+                
+                script.AddAction("sound", new PlayMusic(audioService));
                 script.AddAction("output", new DrawActors(videoService));
+                
                 script.AddAction("endgame", new EndGame(videoService, gamepadService, audioService));
                 script.RemoveAction("output", script.GetActions("output")[0]);
+                
             }
         }
 
@@ -87,17 +97,20 @@ namespace Unit06.Game.Scripting
         private string SetMap()
         {
             // Get map selection based on d-pad
-            if (gamepadService.IsButtonDown(0, "lfl") && temp > 0)
+            if (gamepadService.IsButtonDown(0, "lfl") && mapTemp > 0)
             {
-                this.temp -= 0.03;
+                this.mapTemp -= 0.03;
             }
-            if (gamepadService.IsButtonDown(0, "lfr") && temp < 2)
+            if (gamepadService.IsButtonDown(0, "lfr") && mapTemp < 2)
             {
-                this.temp += 0.03;
+                this.mapTemp += 0.03;
             }
-            mapIndex = Convert.ToInt32(temp);
+            // Converts the map index (int) to the map file (string)
+            mapIndex = Convert.ToInt32(mapTemp);
 
             return mapArray[mapIndex];
         }
+
+        
     }
 }

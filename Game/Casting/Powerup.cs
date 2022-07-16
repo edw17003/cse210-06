@@ -3,28 +3,31 @@ namespace Unit06.Game.Casting
     class Powerup : Actor
     {
         private int effect;
-        private int posX = 0;
-        private int posY = 0;
+        private int posX;
+        private int posY;
         Random random = new Random();
         public Powerup(int posX, int posY)
         {
+            this.posX = posX;
+            this.posY = posY;
             effect = random.Next(1,4);
-            this.SetSize(10,10);
+            this.SetSize(32,32);
             this.SetPosition(new Point(this.posX, this.posY));
+            this.SetSprite(new Sprite("Game/Assets/Sprites/powerup.png", 1, 0));
         }
-        public int getEffect()
+        public int GetEffect()
         {
             return effect;
         }
-        public int getPosX()
+        public int GetPosX()
         {
             return posX;
         }
-        public int getPosY()
+        public int GetPosY()
         {
             return posY;
         }
-        public void applyEffect(Cast cast, Player player)
+        public void ApplyEffect(Cast cast, Player player)
         {
             switch (this.effect)
             {
@@ -41,30 +44,31 @@ namespace Unit06.Game.Casting
                     Console.WriteLine("Applied effect 4");
                     break;
             }
-            Actor effect = cast.GetFirstOfKey("effect");
-            cast.RemoveActor("powerup", effect);
+            Actor powerup = cast.GetFirstOfKey("powerup");
+            cast.RemoveActor("powerup", powerup);
         }
-        public void spawnPowerup(Cast cast)
+        public void SpawnPowerup(Cast cast)
         {
-            List<Actor> walls = new List<Actor>(cast.GetActors("walls"));
             bool cannotSpawn = true;
-            Powerup testPowerup = new Powerup(0,0);
 
             while (cannotSpawn)
             {
-                int newX = random.Next(1, Constants.MAX_X - 10);
-                int newY = random.Next(1, Constants.MAX_Y - 10);
-                testPowerup = new Powerup(newX, newY);
+                int newX = random.Next(1, Constants.MAX_X - this.GetSize().GetX());
+                int newY = random.Next(1, Constants.MAX_Y - this.GetSize().GetY());
+                Powerup testPowerup = new Powerup(newX, newY);
 
-                foreach (Wall wall in walls)
+                foreach (Actor actor in cast.GetAllActors())
                 {
-                    if (!testPowerup.Overlaps(wall))
+                    if (!testPowerup.Overlaps(actor))
                     {
                         cannotSpawn = false;
                     }
                 }
+                if (!cannotSpawn)
+                {
+                    cast.AddActor("powerups", testPowerup);
+                }
             }
-            cast.AddActor("powerup", testPowerup);
         }
         public bool IsPowerupPresent(Cast cast)
         {

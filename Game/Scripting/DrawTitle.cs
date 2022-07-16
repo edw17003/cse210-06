@@ -65,6 +65,7 @@ namespace Unit06.Game.Scripting
                 script.AddAction("update", new HandleCooldowns());
                 script.AddAction("update", new MoveActors());
                 script.AddAction("update", new PlayMusic(audioService));
+                script.AddAction("update", new SpawnPowerup());
                 script.AddAction("output", new DrawActors(videoService));
                 script.AddAction("endgame", new EndGame(videoService, gamepadService, audioService));
                 script.RemoveAction("output", script.GetActions("output")[0]);

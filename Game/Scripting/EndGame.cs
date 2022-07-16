@@ -30,6 +30,7 @@ namespace Unit06.Game.Scripting
                 {
                     audioService.StopMusic(new Casting.Sound("Game/Assets/Music\\music.mp3"));
                     script.RemoveAction("input", script.GetActions("input")[0]);
+                    script.RemoveAction("update", script.GetActions("update")[4]);
                     script.RemoveAction("update", script.GetActions("update")[3]);
                     script.RemoveAction("update", script.GetActions("update")[2]);
                     script.RemoveAction("update", script.GetActions("update")[1]);

@@ -29,7 +29,11 @@ namespace Unit06.Game.Scripting
 
             videoService.ClearBuffer();
             videoService.DrawBackground();
-            videoService.DrawImage(powerups[0].GetSprite(), powerups[0].GetPosition());
+            foreach (Powerup powerup in powerups)
+            {
+                videoService.DrawImage(powerup.GetSprite(), powerup.GetPosition());
+            }
+            
             videoService.DrawImage(players[0].GetSprite(), players[0].GetPosition());
             videoService.DrawImage(players[1].GetSprite(), players[1].GetPosition());
             

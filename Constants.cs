@@ -7,7 +7,7 @@ namespace Unit06.Game
     {
         public static int max_overheal = 50;
         public static string laserSound = "Game/Assets/Sounds\\laser.wav";
-        public static string wallsTextFile = "Game/Assets/MapData/map.txt";
+        public static string map1 = "Game/Assets/MapData/map.txt";
         public static string map2 = "Game/Assets/MapData/map2.txt";
         public static string map3 = "Game/Assets/MapData/map3.txt";
         public static string map4 = "Game/Assets/MapData/map4.txt";

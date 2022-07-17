@@ -53,7 +53,7 @@ namespace Unit06.Game.Scripting
                 index++;
             }
         }
-
+        //throws the sword if the player has their right joystick pointed in a direction
         private void ThrowSword(Sword sword, int index)
         {
             if (gamepadService.IsButtonDown(index, "rt") && sword.GetIsThrown() == false && sword.GetCooldown() == 0)
@@ -70,6 +70,7 @@ namespace Unit06.Game.Scripting
             }
         }
 
+        //Sets the sword's position if the sword is currently supposed to be attached to the player
         private void SetSwordPos(Sword sword, Player player)
         {
             if (!sword.GetIsThrown())
@@ -78,18 +79,19 @@ namespace Unit06.Game.Scripting
                 sword.SetSpriteRotation(player.GetAngle());
             }
         }
-
+        //Returns a point based on the left joystick's direction
         private Point GetDirection(int index)
         {
             return new Point((int)(gamepadService.GetLeftVector(index).X * Constants.PLAYERSPEED), 
             (int)(gamepadService.GetLeftVector(index).Y * Constants.PLAYERSPEED));
         }
 
+        //Returns the angle of the right joystick
         private int GetAngle(int index)
         {
             return (int)(180/Math.PI * (Math.Atan2(gamepadService.GetRightVector(index).Y, gamepadService.GetRightVector(index).X )));
         }
-
+        //Returns the point that the sword should be positioned at
         private Point SwordPosition(Point player)
         {
             

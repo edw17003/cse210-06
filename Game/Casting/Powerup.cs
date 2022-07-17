@@ -13,7 +13,7 @@ namespace Unit06.Game.Casting
             effect = random.Next(1,3);
             this.SetSize(32,32);
             this.SetPosition(new Point(this.posX, this.posY));
-            this.SetSprite(new Sprite("Game/Assets/Sprites/powerup.png", 1, 0));
+            this.SetSprite(new Sprite("Game/Assets/Sprites/powerup" + effect + ".png", 1, 0));
         }
         public int GetEffect()
         {

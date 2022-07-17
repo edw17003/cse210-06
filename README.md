@@ -1,8 +1,8 @@
-# cse210-05
- Cycle game
+# cse210-06
+ Fight game
  Joshua Johnson, Jake Edwards, Benjamin Pratt
 
-Classes:
+Classes: ||NEEDS CHANGING, CURRENT IS FOR PREVIOUS PROJECT||
     Constants - Holds constant variables, like colors, font size, resolution, etc.
     Program - Creates the cast, script, services, then starts the game by calling Director()
     Director - Launches the game and runs the game loop phases: "Input, update, output"

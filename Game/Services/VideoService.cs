@@ -148,13 +148,14 @@ namespace Unit06.Game.Services
             }
         }
 
-        public void DrawHealth(Player player)
+        public void DrawHealth(Player player, Raylib_cs.Color color)
         {
+
             int posX = player.GetPosition().GetX();
             int posY = player.GetPosition().GetY() - 10;
             int width = (int)(player.GetHealth() / 1.5);
             int height = 10;
-            Raylib.DrawRectangle(posX, posY, width, height, Raylib_cs.Color.RED);
+            Raylib.DrawRectangle(posX, posY, width, height, color);
         }
 
         public void DrawHitbox(Actor actor)

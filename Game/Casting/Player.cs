@@ -7,18 +7,22 @@ namespace Unit06.Game.Casting
         private int cooldown = 0;
         private int cdStart = 120;
         private int angle = 0;
-        
+        private string color;
 
         private int health = 100;
 
         /// Constructs a new instance of Player.
-        public Player(Sprite sprite, Point spawn)
+        public Player(Sprite sprite, Point spawn, string color)
         {
             SetPosition(spawn);
             SetSprite(sprite);
             SetSize(64, 64);
+            this.color = color;
         }
-
+        public string GetPlayerColor()
+        {
+            return color;
+        }
         public void SetAngle(int angle)
         {
             this.angle = angle;

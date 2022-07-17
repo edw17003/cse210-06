@@ -49,8 +49,8 @@ namespace Unit06.Game.Scripting
                 Sprite p2 = new Sprite("Game/Assets/Sprites/player2.png", 1, 0);
                 Point spawn1 = new Point(int.Parse(s1[0]), int.Parse(s1[1]));
                 Point spawn2 = new Point(int.Parse(s2[0]), int.Parse(s2[1]));
-                cast.AddActor("players", new Player(p1, spawn1));
-                cast.AddActor("players", new Player(p2, spawn2));
+                cast.AddActor("players", new Player(p1, spawn1, "Green"));
+                cast.AddActor("players", new Player(p2, spawn2, "Red"));
                 cast.AddActor("swords", new Sword());
                 cast.AddActor("swords", new Sword());
                 

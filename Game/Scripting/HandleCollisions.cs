@@ -83,7 +83,7 @@ namespace Unit06.Game.Scripting
                         yVelocity = 0;
                     }
                     player.SetVelocity(new Point(player.GetVelocity().GetX(), yVelocity));
-                }
+                } 
                 if (player.OverlapsBottom(otherPlayer))
                 {
                     int yVelocity = player.GetVelocity().GetY();
@@ -92,7 +92,7 @@ namespace Unit06.Game.Scripting
                         yVelocity = 0;
                     }
                     player.SetVelocity(new Point(player.GetVelocity().GetX(), yVelocity));   
-                }
+                }   
                 if (player.OverlapsLeft(otherPlayer))
                 {
                     int xVelocity = player.GetVelocity().GetX();
@@ -101,7 +101,7 @@ namespace Unit06.Game.Scripting
                         xVelocity = 0;
                     }
                     player.SetVelocity(new Point(xVelocity, player.GetVelocity().GetY()));  
-                }
+                }   
                 if (player.OverlapsRight(otherPlayer))
                 {
                     int xVelocity = player.GetVelocity().GetX();

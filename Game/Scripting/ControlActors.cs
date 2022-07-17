@@ -58,9 +58,15 @@ namespace Unit06.Game.Scripting
         {
             if (gamepadService.IsButtonDown(index, "rt") && sword.GetIsThrown() == false && sword.GetCooldown() == 0)
             {
-                audioService.PlaySound(throwSound);
+                
                 sword.SetIsThrown(true);
-                sword.SetVelocity(new Point((int)(gamepadService.GetRightVector(index).X*10), (int)(gamepadService.GetRightVector(index).Y * 10)));
+                if (gamepadService.GetRightVector(index).X == 0 && gamepadService.GetRightVector(index).Y == 0)
+                { 
+                    sword.SetIsThrown(false);
+                } else {
+                    audioService.PlaySound(throwSound);
+                    sword.SetVelocity(new Point((int)(gamepadService.GetRightVector(index).X*10), (int)(gamepadService.GetRightVector(index).Y * 10)));
+                }
             }
         }
 

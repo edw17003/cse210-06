@@ -75,7 +75,8 @@ namespace Unit06.Game.Scripting
 
         private Point GetDirection(int index)
         {
-            return new Point((int)(gamepadService.GetLeftVector(index).X * 4), (int)(gamepadService.GetLeftVector(index).Y * 4));
+            return new Point((int)(gamepadService.GetLeftVector(index).X * Constants.PLAYERSPEED), 
+            (int)(gamepadService.GetLeftVector(index).Y * Constants.PLAYERSPEED));
         }
 
         private int GetAngle(int index)

@@ -6,6 +6,8 @@ namespace Unit06.Game
     public class Constants
     {
         public static int max_overheal = 50;
+        public static int PLAYERSPEED = 3;
+
         public static string laserSound = "Game/Assets/Sounds\\laser.wav";
         public static string map1 = "Game/Assets/MapData/map.txt";
         public static string map2 = "Game/Assets/MapData/map2.txt";

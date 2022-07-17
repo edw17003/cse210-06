@@ -10,6 +10,7 @@ namespace Unit06.Game
         public static string wallsTextFile = "Game/Assets/MapData/map.txt";
         public static string map2 = "Game/Assets/MapData/map2.txt";
         public static string map3 = "Game/Assets/MapData/map3.txt";
+        public static string map4 = "Game/Assets/MapData/map4.txt";
         public static string player1Sprite = "Game/Assets/Sprites/player1.png";
         public static string player2Sprite = "Game/Assets/Sprites/player2.png";
         public static string throwSound = "Game/Assets/Sounds\\laser.wav";

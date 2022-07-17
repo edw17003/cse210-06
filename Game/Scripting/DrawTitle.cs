@@ -12,7 +12,7 @@ namespace Unit06.Game.Scripting
         private string message;
         double mapTemp = 0;
         private int mapIndex = 0;
-        private string[] mapArray = new string[3]{Constants.wallsTextFile, Constants.map2, Constants.map3};
+        private string[] mapArray = new string[4]{Constants.wallsTextFile, Constants.map2, Constants.map3, Constants.map4};
         
 
         /// Constructs a new instance of DrawTitle
@@ -99,7 +99,7 @@ namespace Unit06.Game.Scripting
             {
                 this.mapTemp -= 0.03;
             }
-            if (gamepadService.IsButtonDown(0, "lfr") && mapTemp < 2)
+            if (gamepadService.IsButtonDown(0, "lfr") && mapTemp < 3)
             {
                 this.mapTemp += 0.03;
             }

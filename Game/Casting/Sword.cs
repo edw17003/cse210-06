@@ -77,10 +77,10 @@ namespace Unit06.Game.Casting
                 this.cooldown--;
             }
             
-            if (this.cooldown == 0)
-            {
-                this.thrown = false;
-            }
+            // if (this.cooldown == 0)
+            // {
+            //     this.thrown = false;
+            // }
         }
 
         public int GetcdStart()

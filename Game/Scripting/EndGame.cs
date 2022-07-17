@@ -29,14 +29,14 @@ namespace Unit06.Game.Scripting
                 if (player.GetHealth() <= 0)
                 {
                     audioService.StopMusic(new Casting.Sound("Game/Assets/Music\\music.mp3"));
-                    
+                    string winner = player.GetPlayerColor();
                     
                     script.RemoveAllOfKey("update");
                     script.RemoveAllOfKey("input");
                     script.RemoveAllOfKey("sound");
                     script.RemoveAction("output", script.GetActions("output")[0]);
                     script.RemoveAction("endgame", script.GetActions("endgame")[0]);
-                    script.AddAction("output", new DrawTitle(videoService, gamepadService, audioService, "Game Over. Press Start to Play Again."));
+                    script.AddAction("output", new DrawTitle(videoService, gamepadService, audioService, $"{winner} loses! Press Start to Play Again."));
                     cast.RemoveAllActors();
                     break;
                 }

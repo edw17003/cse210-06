@@ -45,8 +45,8 @@ namespace Unit06.Game.Scripting
             
             videoService.DrawWalls(walls);
             videoService.DrawActors(messages);
-            videoService.DrawHealth(player1);
-            videoService.DrawHealth(player2);
+            videoService.DrawHealth(player1, Raylib_cs.Color.GREEN);
+            videoService.DrawHealth(player2, Raylib_cs.Color.RED);
             videoService.FlushBuffer();
         }
     }

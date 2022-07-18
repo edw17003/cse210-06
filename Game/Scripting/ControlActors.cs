@@ -4,8 +4,8 @@ using Unit06.Game.Services;
 
 namespace Unit06.Game.Scripting
 {
-    /// <para>An input action that controls the snake.</para>
-    /// The responsibility of ControlActorsAction is to get the direction and move the snake's head.
+    /// <para>Player and sword movement.</para>
+    /// The responsibility of ControlActors is to move the players and the swords.
     public class ControlActors : Action
     {
         private GamepadService gamepadService;
@@ -13,7 +13,7 @@ namespace Unit06.Game.Scripting
         private Sound throwSound = new Sound(Constants.throwSound);
 
 
-        /// Constructs a new instance of ControlActorsAction using the given KeyboardService.
+        /// Constructs a new instance of ControlActors.
         public ControlActors(GamepadService gamepadService, AudioService audioService)
         {
             this.gamepadService = gamepadService;
@@ -24,13 +24,15 @@ namespace Unit06.Game.Scripting
         public void Execute(Cast cast, Script script)
         {
             
-
+            //Index required to get the correct gamepad for each player
             int index = 0;
             foreach( Player player in cast.GetActors("players"))
             {
+                //Get the direction and set the player's velocity and angle
                 Point direction = GetDirection(index);
                 player.SetVelocity(direction);
                 player.SetAngle(GetAngle(index));
+                //Get the sword value and sets and throws the sword
                 Sword sword = (Sword)cast.GetActors("swords")[index];
                 SetSwordPos(sword, player);
                 // if (sword.GetIsThrown())

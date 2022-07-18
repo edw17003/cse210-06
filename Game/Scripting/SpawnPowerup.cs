@@ -2,6 +2,7 @@ using Unit06.Game.Casting;
 
 namespace Unit06.Game.Scripting
 {
+    // Spawns powerups each frame if there are less powerups than the desired amount.
     class SpawnPowerup : Action
     {
         Powerup powerup = new Powerup(-100,-100);

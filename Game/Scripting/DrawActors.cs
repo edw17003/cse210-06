@@ -14,7 +14,6 @@ namespace Unit06.Game.Scripting
             this.videoService = videoService;
         }
 
-        /// 
         public void Execute(Cast cast, Script script)
         {
             List<Actor> players = cast.GetActors("players");

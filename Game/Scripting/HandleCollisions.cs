@@ -5,8 +5,6 @@ namespace Unit06.Game.Scripting
     /// An update action that handles interactions between the actors.
     public class HandleCollisions : Action
     {
-        private bool isGameOver = false;
-
         /// <summary>
         /// Constructs a new instance of HandleCollisionsAction.
         /// </summary>
@@ -17,16 +15,13 @@ namespace Unit06.Game.Scripting
         /// <inheritdoc/>
         public void Execute(Cast cast, Script script)
         {
-            if (isGameOver == false)
-            {
-                HandleGameOver(cast);
-                HandlePlayerCollisions(cast);
-                HandleWallCollisions(cast);
-                HandleSwordWallCollisions(cast);
-                HandlePlayerSwordCollisions(cast);
-                HandlePowerupCollisions(cast);
-            }
+            HandlePlayerCollisions(cast);
+            HandleWallCollisions(cast);
+            HandleSwordWallCollisions(cast);
+            HandlePlayerSwordCollisions(cast);
+            HandlePowerupCollisions(cast);
         }
+        /// Handles when players collect powerups
         private void HandlePowerupCollisions(Cast cast)
         {
             List<Actor> players = cast.GetActors("players");
@@ -46,6 +41,7 @@ namespace Unit06.Game.Scripting
                 index ++;
             }
         }
+        /// Handles when a sword collides with a wall
         private void HandleSwordWallCollisions(Cast cast)
         {
             List<Actor> swords = cast.GetActors("swords");
@@ -62,6 +58,7 @@ namespace Unit06.Game.Scripting
                 }
             }
         }
+        /// Handles when a player collides with another player
         private void HandlePlayerCollisions(Cast cast)
         {
             
@@ -114,7 +111,7 @@ namespace Unit06.Game.Scripting
                 index++;
             }
         }
-
+        /// Handles collisions between players and walls
         public void HandleWallCollisions(Cast cast)
         {
             Player player1 = (Player)cast.GetActors("players")[0];
@@ -171,7 +168,7 @@ namespace Unit06.Game.Scripting
                 }
             } 
         }
-
+        /// Handles collisions between players and swords
         public void HandlePlayerSwordCollisions(Cast cast)
         {
             Player player1 = (Player)cast.GetActors("players")[0];
@@ -180,56 +177,19 @@ namespace Unit06.Game.Scripting
             Sword sword2 = (Sword)cast.GetActors("swords")[1];
 
             if (sword2.Overlaps(player1) && player1.GetCooldown() == 0)
-                {
-                      player1.DamagePlayer(sword2.GetDamage());
-                      player1.StartCooldown();
-                      //Console.WriteLine("Sword2 Colliding with Player1");
-                      sword2.SetIsThrown(false);           
-                }
-            if (sword1.Overlaps(player2) && player2.GetCooldown() == 0)
-                {
-                      player2.DamagePlayer(sword1.GetDamage());
-                      player2.StartCooldown();
-                      //Console.WriteLine("Sword1 Colliding with Player2");
-                      sword1.SetIsThrown(false);
-                }
-        }
-
-        // Handles what happens if the game ends.
-        // Turns the cycles and their trails white and 
-        // displays the game over message.
-        private void HandleGameOver(Cast cast)
-        {
-            if (isGameOver == true)
             {
-                Player player1 = (Player)cast.GetFirstOfKey("player1");
-                Player player2 = (Player)cast.GetFirstOfKey("player2");
-
-                // create a "game over" message
-                int x = Constants.MAX_X / 2 - 110;
-                int y = Constants.MAX_Y / 2 - 45;
-                Point position = new Point(x, y);
-                Color color = new Color(255, 0, 255);
-                Actor message = new Actor();
-                message.SetColor(color);
-                message.SetFontSize(45);
-                message.SetText("Game Over!");
-                message.SetPosition(position);
-                cast.AddActor("messages", message);
-
-                // make everything white
-                // foreach (Actor segment in body1)
-                // {
-                //     segment.SetColor(Constants.WHITE);
-                // }
-                // foreach (Actor segment in body2)
-                // {
-                //     segment.SetColor(Constants.WHITE);
-                // }
-                player1.SetColor(Constants.WHITE);
-                player2.SetColor(Constants.WHITE);
+                    player1.DamagePlayer(sword2.GetDamage());
+                    player1.StartCooldown();
+                    //Console.WriteLine("Sword2 Colliding with Player1");
+                    sword2.SetIsThrown(false);           
+            }
+            if (sword1.Overlaps(player2) && player2.GetCooldown() == 0)
+            {
+                    player2.DamagePlayer(sword1.GetDamage());
+                    player2.StartCooldown();
+                    //Console.WriteLine("Sword1 Colliding with Player2");
+                    sword1.SetIsThrown(false);
             }
         }
-
     }
 }

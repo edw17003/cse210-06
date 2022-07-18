@@ -4,6 +4,7 @@ using Unit06.Game.Services;
 
 namespace Unit06.Game.Scripting
 {
+    // Handles playing of music.
     public class PlayMusic : Action
     {
         private AudioService audioService;

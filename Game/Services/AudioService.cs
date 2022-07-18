@@ -34,7 +34,8 @@ namespace Unit06.Game.Services
                 sounds[filepath] = sound;
             }
         }
-     public void LoadMusic(string directory)
+        /// </inheritdoc>
+        public void LoadMusic(string directory)
         {
             List<string> filters = new List<string>() { "*.wav", "*.mp3", "*.acc", "*.wma" };
             List<string> filepaths = GetFilepaths(directory, filters);
@@ -55,6 +56,7 @@ namespace Unit06.Game.Services
                 Raylib.PlaySound(raylibSound);
             }
         }
+        /// </inheritdoc>
         public bool IsSoundPlaying(Casting.Sound sound)
         {
             bool IsPlaying = false;
@@ -66,6 +68,7 @@ namespace Unit06.Game.Services
             }
             return IsPlaying;
         }
+        /// </inheritdoc>
         public bool IsMusicPlaying(Casting.Sound sound)
         {
             bool IsPlaying = false;
@@ -77,6 +80,7 @@ namespace Unit06.Game.Services
             }
             return IsPlaying;
         }
+        /// </inheritdoc>
         public void PlayMusic(Casting.Sound sound)
         {
             string filename = sound.GetFilename();
@@ -86,7 +90,7 @@ namespace Unit06.Game.Services
                 Raylib.PlayMusicStream(raylibMusic);
             }
         }
-
+        /// </inheritdoc>
         public void StopMusic(Casting.Sound sound)
         {
             string filename = sound.GetFilename();
@@ -96,6 +100,7 @@ namespace Unit06.Game.Services
                 Raylib.StopMusicStream(raylibMusic);
             }
         }
+        /// </inheritdoc>
         public void UpdateMusic(Casting.Sound sound)
         {
             string filename = sound.GetFilename();
@@ -121,7 +126,7 @@ namespace Unit06.Game.Services
                 Raylib.UnloadSound(raylibSound);
             }
         }
-
+        /// </inheritdoc>
         private List<string> GetFilepaths(string directory, List<string> filters)
         {
             List<string> results = new List<string>();

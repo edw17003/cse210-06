@@ -40,7 +40,6 @@ namespace Unit06.Game.Scripting
             if (startGame)
             {
                 // Read the map file
-                
                 string wallsTextFile = System.IO.File.ReadAllText(map);
                 string[] fileRows = wallsTextFile.Split("\n");
                 string[] s1 = fileRows[1].Split(",");
@@ -110,8 +109,6 @@ namespace Unit06.Game.Scripting
             mapIndex = Convert.ToInt32(mapTemp);
 
             return mapArray[mapIndex];
-        }
-
-        
+        }   
     }
 }

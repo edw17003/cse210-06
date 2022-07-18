@@ -3,7 +3,7 @@ using Unit06.Game.Casting;
 
 namespace Unit06.Game.Scripting
 {
-    /// An update action that handles interactions between the actors.
+    /// An update action that handles cooldowns.
     public class HandleCooldowns : Action
     {
         /// <summary>

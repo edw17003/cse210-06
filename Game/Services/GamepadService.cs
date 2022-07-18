@@ -31,32 +31,32 @@ namespace Unit06.Game.Services
            buttons["unknown"] = GamepadButton.GAMEPAD_BUTTON_UNKNOWN;
         }
 
-        /// Checks if the given key is currently down. (w, a, s, d, i, j, k, or l)
+        /// Checks if the given button is currently down.
         public bool IsButtonDown(int gamepad, string key)
         {
             GamepadButton raylibKey = buttons[key.ToLower()];
             return Raylib.IsGamepadButtonDown(gamepad, raylibKey);
         }
 
-        /// Checks if the given key is currently up. (w, a, s, d, i, j, k, or l)
+        /// Checks if the given button is currently up.
         public bool IsButtonUp(int gamepad, string key)
         {
             GamepadButton raylibKey = buttons[key.ToLower()];
             return Raylib.IsGamepadButtonUp(gamepad, raylibKey);
         }
-
+        /// Returns a bool based on if a gamepad is connected
         public bool IsGamepadAvailable(int gamepad)
         {
             return Raylib.IsGamepadAvailable(gamepad);
         }
-
+        /// Returns a vector representing the left stick
         public Vector2 GetLeftVector(int gamepad)
         {
             float x = Raylib.GetGamepadAxisMovement(gamepad, GamepadAxis.GAMEPAD_AXIS_LEFT_X);
             float y = Raylib.GetGamepadAxisMovement(gamepad, GamepadAxis.GAMEPAD_AXIS_LEFT_Y);
             return new Vector2 (x, y);
         }
-
+        /// Returns a vector representing the right stick
         public Vector2 GetRightVector(int gamepad)
         {
             float x = Raylib.GetGamepadAxisMovement(gamepad, GamepadAxis.GAMEPAD_AXIS_RIGHT_X);
@@ -65,20 +65,3 @@ namespace Unit06.Game.Services
         }
     }
 }
-
-
-
-
-
-
-/* // Input-related functions: gamepads
-    bool IsGamepadAvailable(int gamepad);                                   // Check if a gamepad is available
-    const char *GetGamepadName(int gamepad);                                // Get gamepad internal name id
-    bool IsGamepadButtonPressed(int gamepad, int button);                   // Check if a gamepad button has been pressed once
-    bool IsGamepadButtonDown(int gamepad, int button);                      // Check if a gamepad button is being pressed
-    bool IsGamepadButtonReleased(int gamepad, int button);                  // Check if a gamepad button has been released once
-    bool IsGamepadButtonUp(int gamepad, int button);                        // Check if a gamepad button is NOT being pressed
-    int GetGamepadButtonPressed(void);                                      // Get the last gamepad button pressed
-    int GetGamepadAxisCount(int gamepad);                                   // Get gamepad axis count for a gamepad
-    float GetGamepadAxisMovement(int gamepad, int axis);                    // Get axis movement value for a gamepad axis
-    int SetGamepadMappings(const char *mappings);                           // Set internal gamepad mappings (SDL_GameControllerDB) */

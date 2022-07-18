@@ -44,7 +44,7 @@ namespace Unit06.Game.Services
             Raylib_cs.Color color = ToRaylibColor(c);
             Raylib.DrawText(text, x, y, fontSize, color);
         }
-
+        // Draws an image to the screen, given a Sprite and a Point
         public void DrawImage(Casting.Sprite image, Casting.Point position)
         {
             string filename = image.GetFilename();
@@ -67,36 +67,6 @@ namespace Unit06.Game.Services
             {
                 DrawActor(actor);
             }
-        }
-        public void LoadImages(string directory)
-        {
-            List<string> filters = new List<string>() { "*.png", "*.gif", "*.jpg", "*.jpeg", "*.bmp" };
-            List<string> filepaths = GetFilepaths(directory, filters);
-            Console.WriteLine($"Directory: {directory}");
-            foreach (string filepath in filepaths)
-            {
-                try 
-                {
-                    Console.WriteLine($"**** {filepath}");
-                    Raylib_cs.Texture2D texture = Raylib.LoadTexture(filepath);
-                    textures[filepath] = texture;
-                }
-                catch (AccessViolationException)
-                {
-                    Console.WriteLine($"**** {filepath}");
-                }
-            }
-        }
-
-        private List<string> GetFilepaths(string directory, List<string> filters)
-        {
-            List<string> results = new List<string>();
-            foreach (string filter in filters)
-            {
-                string[] filepaths = Directory.GetFiles(directory, filter);
-                results.AddRange(filepaths);
-            }
-            return results;
         }
         
         /// Copies the buffer contents to the screen. This method should be called at the end of
@@ -128,7 +98,7 @@ namespace Unit06.Game.Services
             int a = color.GetAlpha();
             return new Raylib_cs.Color(r, g, b, a);
         }
-
+        /// Draws a wall to the screen
         public void DrawWall(Wall wall)
         {
             int posX = wall.GetPosX();
@@ -140,6 +110,7 @@ namespace Unit06.Game.Services
 
             Raylib.DrawRectangle(posX, posY, width, height, ToRaylibColor(color));
         }
+        /// Draws multiple walls to the screen
         public void DrawWalls(List<Actor> walls)
         {
             foreach (Wall wall in walls)
@@ -147,7 +118,7 @@ namespace Unit06.Game.Services
                 DrawWall(wall);
             }
         }
-
+        /// Draws the health of the players to the screen
         public void DrawHealth(Player player, Raylib_cs.Color color)
         {
 
@@ -157,7 +128,7 @@ namespace Unit06.Game.Services
             int height = 10;
             Raylib.DrawRectangle(posX, posY, width, height, color);
         }
-
+        /// Debug method to draw the hitbox of an actor
         public void DrawHitbox(Actor actor)
         {
             int posX = actor.GetPosition().GetX();
@@ -166,6 +137,7 @@ namespace Unit06.Game.Services
             int height = actor.GetSize().GetY();
             Raylib.DrawRectangleLines(posX, posY, width, height, Raylib_cs.Color.BLACK);
         }
+        /// Draws the background to the screen
         public void DrawBackground()
         {
             string filename = Constants.backgroundPath;

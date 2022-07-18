@@ -5,14 +5,14 @@ using Raylib_cs;
 
 namespace Unit06.Game.Scripting
 {
-    /// The responsibility of DrawActorsAction is to draw each of the actors.</para>
+    /// The responsibility of EndGame is to handle when the game ends
     public class EndGame : Action
     {
         private VideoService videoService;
         private GamepadService gamepadService;
         private AudioService audioService;
 
-        /// Constructs a new instance of ControlActorsAction using the given KeyboardService.
+        /// Constructs a new instance of EndGame
         public EndGame(VideoService videoService, GamepadService gamepadService, AudioService audioService)
         {
             this.videoService = videoService;
@@ -20,16 +20,19 @@ namespace Unit06.Game.Scripting
             this.audioService = audioService;
         }
 
-        /// 
+        /// Execute the end of the game
         public void Execute(Cast cast, Script script)
         {
+            //Get the player actors
             List<Actor> players = cast.GetActors("players");
             foreach (Player player in players)
             {
                 if (player.GetHealth() <= 0)
                 {
+                    //If a player reaches 0 health, stop the music, remove the actions, and then add the
+                    //title screen action with an end game message.
                     audioService.StopMusic(new Casting.Sound("Game/Assets/Music\\music.mp3"));
-                    string winner = player.GetPlayerColor();
+                    string winner = player.GetPlayerColor(); //Is actually the loser but we think saying winner is funny
                     
                     script.RemoveAllOfKey("update");
                     script.RemoveAllOfKey("input");

@@ -39,12 +39,13 @@ namespace Unit06.Game.Scripting
             bool startGame = gamepadService.IsButtonDown(0, "rmiddle");
             if (startGame)
             {
-                // Cooldown
+                // Read the map file
                 
                 string wallsTextFile = System.IO.File.ReadAllText(map);
                 string[] fileRows = wallsTextFile.Split("\n");
                 string[] s1 = fileRows[1].Split(",");
                 string[] s2 = fileRows[2].Split(",");
+                //make the players and swords and add them to the cast
                 Sprite p1 = new Sprite("Game/Assets/Sprites/player1.png", 1, 0);
                 Sprite p2 = new Sprite("Game/Assets/Sprites/player2.png", 1, 0);
                 Point spawn1 = new Point(int.Parse(s1[0]), int.Parse(s1[1]));
@@ -65,11 +66,13 @@ namespace Unit06.Game.Scripting
 
                     cast.AddActor("walls", new Wall(posX, posY, width, height));
                 }
+                //Create the countdown actor
                 Actor actor = new Actor();
                 actor.SetPosition(new Point( Constants.MAX_X / 2, Constants.MAX_Y / 2));
                 actor.SetFontSize(Constants.TIMERSIZE);
                 actor.SetColor(Constants.WHITE);
                 cast.AddActor("messages", actor);
+                //Add and remove actions to start the game
                 script.AddAction("timer", new StartTimer(videoService, gamepadService, audioService));
                 
                 script.AddAction("sound", new PlayMusic(audioService));
@@ -80,7 +83,7 @@ namespace Unit06.Game.Scripting
                 
             }
         }
-
+        //Draw the menu text
         private void DisplayMenu(string map)
         {
             int messageWidth = videoService.MeasureText(message, Constants.STARTMESSAGESIZE);

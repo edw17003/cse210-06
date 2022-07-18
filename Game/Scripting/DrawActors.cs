@@ -3,12 +3,12 @@ using Unit06.Game.Services;
 
 namespace Unit06.Game.Scripting
 {
-    /// The responsibility of DrawActorsAction is to draw each of the actors.</para>
+    /// The responsibility of DrawActors is to draw each of the actors.</para>
     public class DrawActors : Action
     {
         private VideoService videoService;
 
-        /// Constructs a new instance of ControlActorsAction using the given KeyboardService.
+        /// Constructs a new instance of DrawActors using the given VideoService.
         public DrawActors(VideoService videoService)
         {
             this.videoService = videoService;
@@ -28,21 +28,23 @@ namespace Unit06.Game.Scripting
             Sprite sprite2 = player2.GetSprite();
 
             videoService.ClearBuffer();
+            //Draw the background first
             videoService.DrawBackground();
+            //Draw each powerup
             foreach (Powerup powerup in powerups)
             {
                 videoService.DrawImage(powerup.GetSprite(), powerup.GetPosition());
             }
-            
+            //Draw the players
             videoService.DrawImage(players[0].GetSprite(), players[0].GetPosition());
             videoService.DrawImage(players[1].GetSprite(), players[1].GetPosition());
-            
+            //Draw the swords
             videoService.DrawImage(swords[0].GetSprite(), swords[0].GetPosition());
             videoService.DrawImage(swords[1].GetSprite(), swords[1].GetPosition());
             // videoService.DrawHitbox(swords[0]);
             // videoService.DrawHitbox(swords[1]);
             
-            
+            //Draw the walls, messages, and health bars.
             videoService.DrawWalls(walls);
             videoService.DrawActors(messages);
             videoService.DrawHealth(player1, Raylib_cs.Color.GREEN);
